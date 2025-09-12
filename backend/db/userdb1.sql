@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2025 at 03:20 PM
+-- Generation Time: Sep 12, 2025 at 03:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `the_file` varchar(255) NOT NULL,
+  `teacher_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `keywords`
 --
 
@@ -38,7 +50,7 @@ CREATE TABLE `keywords` (
 --
 
 INSERT INTO `keywords` (`id`, `keyword`, `teacher_id`) VALUES
-(1, 'python', 2);
+(1, 'what is python', 2);
 
 -- --------------------------------------------------------
 
@@ -87,6 +99,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
 --
 
 --
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teacher_id` (`teacher_id`);
+
+--
 -- Indexes for table `keywords`
 --
 ALTER TABLE `keywords`
@@ -112,6 +131,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
@@ -132,6 +157,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `files`
+--
+ALTER TABLE `files`
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `keywords`
