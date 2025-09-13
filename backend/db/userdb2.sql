@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2025 at 03:08 PM
+-- Generation Time: Sep 13, 2025 at 12:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,14 @@ CREATE TABLE `files` (
   `teacher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `the_file`, `teacher_id`) VALUES
+(1, '\"C:/ PC/file\"', 2),
+(2, '\"C:/PC/progfile\"', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -50,7 +58,8 @@ CREATE TABLE `keywords` (
 --
 
 INSERT INTO `keywords` (`id`, `keyword`, `teacher_id`) VALUES
-(1, 'what is python', 2);
+(1, 'what is python', 2),
+(2, 'how to use loops in python', 2);
 
 -- --------------------------------------------------------
 
@@ -70,7 +79,9 @@ CREATE TABLE `resources` (
 --
 
 INSERT INTO `resources` (`id`, `title`, `link`, `keyword_id`) VALUES
-(1, 'what is python used for', 'https://www.youtube.com/watch?v=QoIRX37VZpo', 1);
+(1, 'what is python used for', 'https://www.youtube.com/watch?v=QoIRX37VZpo', 1),
+(2, 'loops in python', '\"youtube.com\"', 2),
+(3, 'while loop in python', '\"youtube.com/while\"', 2);
 
 -- --------------------------------------------------------
 
@@ -134,19 +145,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `resources`
 --
 ALTER TABLE `resources`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

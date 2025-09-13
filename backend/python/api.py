@@ -14,4 +14,20 @@ def post_api():
 
 
 
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="test"
+)
+
+
+gg = db.cursor()
+
+gg.execute("SELECT * FROM person")
+ff = gg.fetchall()
+print(ff)
+
+
+
 
