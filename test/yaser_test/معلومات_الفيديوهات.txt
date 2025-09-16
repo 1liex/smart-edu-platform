@@ -1,0 +1,202 @@
+هنا معلومات المقاطع بحد ذاتها زي اللايكات عدد المشاهدات مدة المقطع الخ
+
+
+snippet → عنوان، وصف، ثمنبنيلز، قناة، تاريخ نشر.
+statistics → عدد المشاهدات، التعليقات، اللايكات، إلخ.
+contentDetails → مدة الفيديو (ISO 8601)، الجودة (HD/SD)، caption متاح أو لا.
+
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "-T1Tgdoht3sCOU7Ve7M7vgo-hWk",
+    "items": [
+        {
+            "kind": "youtube#video",
+            "etag": "EoN3QqxNIWPOhVPUANL-zGX8Z0I",
+            "id": "x7X9w_GIm1s",
+            "snippet": {
+                "publishedAt": "2021-10-25T15:19:28Z",
+                "channelId": "UCsBjURrPoezykLs9EqgamOA",
+                "title": "Python in 100 Seconds",
+                "description": "Python is arguably the world's most popular programming language. It is easy to learn, yet suitable in professional software like web applications, data science, and server-side scripts. https://fireship.io/tags/python/\n\n#python #programming #100SecondsOfCode\n\n\ud83d\udd17 Resources\n\nPython Docs https://docs.python.org/3/\nPython TIOBE Ranking https://www.infoworld.com/article/3636789/python-tops-tiobe-language-index.html\n\n\ud83d\udd25 Get More Content - Upgrade to PRO\n\nUpgrade to Fireship PRO at https://fireship.io/pro\nUse code lORhwXd2 for 25% off your first payment. \n\n\ud83c\udfa8 My Editor Settings\n\n- Atom One Dark \n- vscode-icons\n- Fira Code Font\n\n\ud83d\udd16 Topics Covered\n\n- Is YouTube built with Python?\n- Is Python Strongly typed?\n- Python syntax and indentation rules\n- When was python released?",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/x7X9w_GIm1s/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/x7X9w_GIm1s/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/x7X9w_GIm1s/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/x7X9w_GIm1s/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/x7X9w_GIm1s/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Fireship",
+                "tags": [
+                    "webdev",
+                    "app development",
+                    "lesson",
+                    "tutorial"
+                ],
+                "categoryId": "28",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Python in 100 Seconds",
+                    "description": "Python is arguably the world's most popular programming language. It is easy to learn, yet suitable in professional software like web applications, data science, and server-side scripts. https://fireship.io/tags/python/\n\n#python #programming #100SecondsOfCode\n\n\ud83d\udd17 Resources\n\nPython Docs https://docs.python.org/3/\nPython TIOBE Ranking https://www.infoworld.com/article/3636789/python-tops-tiobe-language-index.html\n\n\ud83d\udd25 Get More Content - Upgrade to PRO\n\nUpgrade to Fireship PRO at https://fireship.io/pro\nUse code lORhwXd2 for 25% off your first payment. \n\n\ud83c\udfa8 My Editor Settings\n\n- Atom One Dark \n- vscode-icons\n- Fira Code Font\n\n\ud83d\udd16 Topics Covered\n\n- Is YouTube built with Python?\n- Is Python Strongly typed?\n- Python syntax and indentation rules\n- When was python released?"
+                },
+                "defaultAudioLanguage": "en"
+            },
+            "contentDetails": {
+                "duration": "PT2M24S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "statistics": {
+                "viewCount": "2907939",
+                "likeCount": "113240",
+                "favoriteCount": "0",
+                "commentCount": "1783"
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "atlbtjiUpsahE5a3l6wdLEzf4rc",
+            "id": "K5KVEU3aaeQ",
+            "snippet": {
+                "publishedAt": "2025-02-12T12:30:31Z",
+                "channelId": "UCWv7vMbMWH4-V0ZXdmDpPBA",
+                "title": "Python Full Course for Beginners [2025]",
+                "description": "Master Python from scratch \ud83d\ude80 No fluff\u2014just clear, practical coding skills to kickstart your journey! \n\n\u2764\ufe0f Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UCWv7vMbMWH4-V0ZXdmDpPBA/join\n\n\ud83d\ude80 Want to dive deeper?\n- Check out my Python mastery course: https://mosh.link/python-course\n- Subscribe for more awesome Python content: https://goo.gl/6PYaGF\n\n\ud83d\udd17 Related videos \nhttps://youtu.be/yVl_G-F7m8c?si=aoIiT6CyaRRfBsRM\n\n\u270b Stay connected:\n- Full Courses: https://codewithmosh.com\n- Twitter: https://twitter.com/moshhamedani\n- Facebook: https://www.facebook.com/programmingwithmosh/\n- Instagram: https://www.instagram.com/codewithmosh.official/\n- LinkedIn: https://www.linkedin.com/school/codewithmosh/\n\n\ud83d\udcd6 Table of Content\n0:00:00 Introduction\n0:00:56 What is Python?\n0:04:11 Installing Python\n0:05:36 Python Interpreter\n0:07:30 Code Editors\n0:08:49 Your First Python Program\n0:12:25 Python Extension\n0:14:26 Linting Python Code\n0:18:40 Formatting Python Code\n0:22:51 Running Python Code\n0:24:30 Python Implementations\n0:26:59 How Python Code is Executed\n0:29:45 Quiz\n0:31:17 Python Mastery Course\n0:31:44 Variables\n0:34:48 Variable Names\n0:37:51 Strings\n0:43:20 Escape Sequences\n0:46:01 Formatted Strings\n0:48:09 String Methods\n0:54:03 Numbers\n0:56:50 Working With Numbers\n0:58:59 Type Conversion\n1:04:03 Quiz\n1:06:43 Comparison Operators\n1:08:46 Conditional Statements\n1:12:56 Ternary Operator\n1:15:04 Logical Operators\n1:19:07 Short-circuit Evaluations\n1:21:13 Chaining Comparison Operators\n1:22:35 Quiz\n1:24:18 For Loops\n1:27:56 For..Else\n1:30:42 Nested Loops\n1:33:26 Iterables\n1:36:34 While Loops\n1:41:33 Infinite Loops\n1:43:10 Exercise\n1:45:13 Defining Functions\n1:47:37 Arguments\n1:49:57 Types of Functions\n1:53:59 Keyword Arguments\n1:55:59 Default Arguments\n1:57:34 xargs\n\n#Python #AI #MachineLearning #WebDevelopment",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Programming with Mosh",
+                "tags": [
+                    "python full course",
+                    "python full course for begginers",
+                    "python beginners course",
+                    "python complete course",
+                    "python full tutorial",
+                    "python tutorial",
+                    "python programming tutorial",
+                    "python tutorial for beginners",
+                    "learn python",
+                    "python basics",
+                    "programming tutorial",
+                    "python crash course",
+                    "complete python course",
+                    "python",
+                    "python course",
+                    "python programming",
+                    "python for everybody",
+                    "programming with mosh",
+                    "mosh hamedani",
+                    "code with mosh"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Python Full Course for Beginners [2025]",
+                    "description": "Master Python from scratch \ud83d\ude80 No fluff\u2014just clear, practical coding skills to kickstart your journey! \n\n\u2764\ufe0f Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UCWv7vMbMWH4-V0ZXdmDpPBA/join\n\n\ud83d\ude80 Want to dive deeper?\n- Check out my Python mastery course: https://mosh.link/python-course\n- Subscribe for more awesome Python content: https://goo.gl/6PYaGF\n\n\ud83d\udd17 Related videos \nhttps://youtu.be/yVl_G-F7m8c?si=aoIiT6CyaRRfBsRM\n\n\u270b Stay connected:\n- Full Courses: https://codewithmosh.com\n- Twitter: https://twitter.com/moshhamedani\n- Facebook: https://www.facebook.com/programmingwithmosh/\n- Instagram: https://www.instagram.com/codewithmosh.official/\n- LinkedIn: https://www.linkedin.com/school/codewithmosh/\n\n\ud83d\udcd6 Table of Content\n0:00:00 Introduction\n0:00:56 What is Python?\n0:04:11 Installing Python\n0:05:36 Python Interpreter\n0:07:30 Code Editors\n0:08:49 Your First Python Program\n0:12:25 Python Extension\n0:14:26 Linting Python Code\n0:18:40 Formatting Python Code\n0:22:51 Running Python Code\n0:24:30 Python Implementations\n0:26:59 How Python Code is Executed\n0:29:45 Quiz\n0:31:17 Python Mastery Course\n0:31:44 Variables\n0:34:48 Variable Names\n0:37:51 Strings\n0:43:20 Escape Sequences\n0:46:01 Formatted Strings\n0:48:09 String Methods\n0:54:03 Numbers\n0:56:50 Working With Numbers\n0:58:59 Type Conversion\n1:04:03 Quiz\n1:06:43 Comparison Operators\n1:08:46 Conditional Statements\n1:12:56 Ternary Operator\n1:15:04 Logical Operators\n1:19:07 Short-circuit Evaluations\n1:21:13 Chaining Comparison Operators\n1:22:35 Quiz\n1:24:18 For Loops\n1:27:56 For..Else\n1:30:42 Nested Loops\n1:33:26 Iterables\n1:36:34 While Loops\n1:41:33 Infinite Loops\n1:43:10 Exercise\n1:45:13 Defining Functions\n1:47:37 Arguments\n1:49:57 Types of Functions\n1:53:59 Keyword Arguments\n1:55:59 Default Arguments\n1:57:34 xargs\n\n#Python #AI #MachineLearning #WebDevelopment"
+                },
+                "defaultAudioLanguage": "en"
+            },
+                },
+                "defaultAudioLanguage": "en"
+            },
+            "contentDetails": {
+                "defaultAudioLanguage": "en"
+            },
+            "contentDetails": {
+                "duration": "PT2H2M21S",
+            },
+            "contentDetails": {
+                "duration": "PT2H2M21S",
+                "dimension": "2d",
+                "definition": "hd",
+            "contentDetails": {
+                "duration": "PT2H2M21S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "duration": "PT2H2M21S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+                "projection": "rectangular"
+            },
+            "statistics": {
+            },
+            "statistics": {
+            "statistics": {
+                "viewCount": "3195686",
+                "likeCount": "80588",
+                "favoriteCount": "0",
+                "commentCount": "2184"
+            }
+        }
+    ],
+    "pageInfo": {
+        "totalResults": 2,
+        "resultsPerPage": 2
+    }
+}

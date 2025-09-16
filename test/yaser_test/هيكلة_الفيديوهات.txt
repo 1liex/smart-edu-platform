@@ -1,0 +1,315 @@
+هنا عبارة عن الهيكلة الي ترجع لي لو بحثت عن كلمة مفتاحية مثلا بحثت عن 
+what is python
+loops in python
+وقتها يرجع لي كل الهيكلات الي تحت سواء كنت ابحث عن فيديو او قناة او قائمة من المقاطع
+
+
+ملاحظة ترا في التايب في كود البايثون تحديدا ذا الجزء
+
+ response = youtube.search().list(
+        q='بندريتا',
+        part='snippet',
+        maxResults=2,
+        type='channel',
+        relevanceLanguage='en'
+
+    )
+
+video → يرجع مقاطع فيديو فقط.
+channel → يرجع قنوات.
+playlist → يرجع قوائم تشغيل.
+
+
+
+
+تقريبا هذا شكل الهيكلة لو ارسلت طلب لليوتيوب بكلمة معينة في حال كان عبارة عن مقطع واحد
+
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "Kq3MRRDUYFj-IV3jbGwdFH7QBzA",
+    "nextPageToken": "CAEQAA",
+    "regionCode": "SA",
+    "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 1
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "hK38Veh0EE660rER2jAq4NYnNE4",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "BplMR0txSeA"
+            },
+            "snippet": {
+                "publishedAt": "2025-02-19T11:43:05Z",
+                "channelId": "UC8adQ8nskI9jQKTYC0q3O-w",
+                "title": "Python on phone, pydroid 3 #python #android #coding #programming #pydroid3",
+                "description": "Pydroid3: https://play.google.com/store/apps/details?id=ru.iiec.pydroid3.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/BplMR0txSeA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/BplMR0txSeA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/BplMR0txSeA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Electro Sage",
+                "liveBroadcastContent": "none",
+                "publishTime": "2025-02-19T11:43:05Z"
+            }
+        }
+    ]
+}
+
+
+انه صار عندة اكثر من عنصر و طبعا كل عنصر يمثل لي مقطع منفرد يكون فيه عنوان المقطع و مفتاح التعريف الخاص فيه items و هنا نفس الشي لكن لو كان اكثر من مقطع بتلاحظ بالمفتاح 
+
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "_3FCKgI5U64MM_hzO0RHSTZnkQQ",
+    "nextPageToken": "CAIQAA",
+    "regionCode": "SA",
+    "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 2
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "SaJCtQ-8hHTTUPO2ZaC7e-H_8Mw",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "K5KVEU3aaeQ"
+            },
+            "snippet": {
+                "publishedAt": "2025-02-12T12:30:31Z",
+                "channelId": "UCWv7vMbMWH4-V0ZXdmDpPBA",
+                "title": "Python Full Course for Beginners [2025]",
+                "description": "Master Python from scratch No fluff\u2014just clear, practical coding skills to kickstart your journey! \u2764\ufe0f Join this channel to get ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/K5KVEU3aaeQ/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Programming with Mosh",
+                "liveBroadcastContent": "none",
+                "publishTime": "2025-02-12T12:30:31Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "cktaRZ4BcxaKMuI25UaJfU_p9e0",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "_uQrJ0TkZlc"
+            },
+            "snippet": {
+                "publishedAt": "2019-02-18T15:00:08Z",
+                "channelId": "UCWv7vMbMWH4-V0ZXdmDpPBA",
+                "title": "Python Full Course for Beginners",
+                "description": "Learn Python for AI, machine learning, and web development with this beginner-friendly course! Get 6 months of PyCharm ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/_uQrJ0TkZlc/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/_uQrJ0TkZlc/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/_uQrJ0TkZlc/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Programming with Mosh",
+                "liveBroadcastContent": "none",
+                "publishTime": "2019-02-18T15:00:08Z"
+            }
+        }
+    ]
+}
+
+
+كل الي فوق يخص مقاطع الفيديو بس 
+
+اما هذا يخص بلاي ليست يعني كذا بتكون هيكلة البلاي ليست 
+
+
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "s3e0L0XTJRITb9tKOd0hqIQjxag",
+    "nextPageToken": "CAIQAA",
+    "regionCode": "SA",
+    "pageInfo": {
+        "totalResults": 36615,
+        "resultsPerPage": 2
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "Sx9rlk-xkuZn7oMV9W6O4BtXWV0",
+            "id": {
+                "kind": "youtube#playlist",
+                "playlistId": "PLDoPjvoNmBAyE_gei5d18qkfIe-Z8mocs"
+            },
+            "snippet": {
+                "publishedAt": "2020-04-01T20:32:32Z",
+                "channelId": "UCSNkfKl4cU-55Nm-ovsvOHQ",
+                "title": "Mastering Python - \u062a\u0639\u0644\u0645 \u0628\u0627\u064a\u062b\u0648\u0646",
+                "description": "Mastering Python in Arabic And Learn Info About All Paths.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/mvZHDpCHphk/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/mvZHDpCHphk/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/mvZHDpCHphk/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Elzero Web School",
+                "liveBroadcastContent": "none",
+                "publishTime": "2020-04-01T20:32:32Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "pjVA8Ri-A77b_kLFivzOc0DGaOY",
+            "id": {
+                "kind": "youtube#playlist",
+                "playlistId": "PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3"
+            },
+            "snippet": {
+                "publishedAt": "2018-06-30T13:24:43Z",
+                "channelId": "UC59K-uG2A5ogwIrHw4bmlEg",
+                "title": "Python for Beginners (Full Course) | Programming Tutorial",
+                "description": "Python Tutorial, Easy Python tutorial for beginner, learn Python Programming, learn python programming with example and ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/QXeEoD0pB3E/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/QXeEoD0pB3E/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/QXeEoD0pB3E/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Telusko",
+                "liveBroadcastContent": "none",
+                "publishTime": "2018-06-30T13:24:43Z"
+            }
+        }
+    ]
+}
+
+
+وذي الهيكلة لو انا ابي قناة معينة 
+
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "8xY8IlMcXJO5zCGm1Zv0bVTPoao",
+    "nextPageToken": "CAIQAA",
+    "regionCode": "SA",
+    "pageInfo": {
+        "totalResults": 26624,
+        "resultsPerPage": 2
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "xmSi1IT3hNcBGzN-a7mX_mJTyYo",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCZX4-xsDyFmrPyBO6zmf8tw"
+            },
+            "snippet": {
+                "publishedAt": "2025-06-16T03:13:38Z",
+                "channelId": "UCZX4-xsDyFmrPyBO6zmf8tw",
+                "title": "C++ Course",
+                "description": "I'm here to teach all of you about programming especially in c++.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/fv8gKkhWhi869ySLfLi6Pu0KzsVvTCnPg0w12-SFQq93ORMK020ozVljEO38aZhGByJ7ecgl=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/fv8gKkhWhi869ySLfLi6Pu0KzsVvTCnPg0w12-SFQq93ORMK020ozVljEO38aZhGByJ7ecgl=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/fv8gKkhWhi869ySLfLi6Pu0KzsVvTCnPg0w12-SFQq93ORMK020ozVljEO38aZhGByJ7ecgl=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "C++ Course",
+                "liveBroadcastContent": "none",
+                "publishTime": "2025-06-16T03:13:38Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "v7G4beCZ1a4z0idwXB8wCMeGqVg",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCxHAlbZQNFU2LgEtiqd2Maw"
+            },
+            "snippet": {
+                "publishedAt": "2007-09-08T22:02:33Z",
+                "channelId": "UCxHAlbZQNFU2LgEtiqd2Maw",
+                "title": "C++ Weekly With Jason Turner",
+                "description": "Making C++ Fun and Accessible.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/tzNKszVZX5vbIVnp5AKCCv-IQpKSo5K0HZfGj97N1hoI9kDBkwNcSnOzzkkUuTMOUESs0qd_Ng=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/tzNKszVZX5vbIVnp5AKCCv-IQpKSo5K0HZfGj97N1hoI9kDBkwNcSnOzzkkUuTMOUESs0qd_Ng=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/tzNKszVZX5vbIVnp5AKCCv-IQpKSo5K0HZfGj97N1hoI9kDBkwNcSnOzzkkUuTMOUESs0qd_Ng=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "C++ Weekly With Jason Turner",
+                "liveBroadcastContent": "none",
+                "publishTime": "2007-09-08T22:02:33Z"
+            }
+        }
+    ]
+}
