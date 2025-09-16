@@ -48,7 +48,7 @@ $url = "http://127.0.0.1:5000/API/resources";
 
 $data = [
     "keyword" => "python",
-    "id" => 6
+    "id" => 1
 ];
 
 $options = [
@@ -73,3 +73,13 @@ echo $result;
 
 ايضا تسوي فنكشن للحذف لو ابي احذف ملف معين 
 
+
+
+php  كود مساعد
+
+$stmt = $pdo->prepare("INSERT INTO keywords (keyword) VALUES (:kw)");
+$stmt->execute([':kw' => $keyword]);
+$keyword_id = $pdo->lastInsertId();
+
+
+ذا الكود ابحث عنه و ايش يسوي وظيفته انه يحفظ الكلمة و بنفس الوقت يرجع الاي دي الخاص فيها بعد الحفظ
