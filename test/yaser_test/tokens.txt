@@ -1,0 +1,3 @@
+youtube_api_key = "AIzaSyBc3c6Tb4q_VBujqd-1BYBSA_M8njefVMM"
+google_api_key = "AIzaSyAtHTzxb-gJgd92AR897uyZawovlz78_Gw"  # مفتاح API الخاص بـ Google Custom Search
+google_cx = "51d40f0ebc9304bb7" 

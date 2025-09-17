@@ -1,6 +1,7 @@
 const btn = document.getElementById("btn")
 
-id = 1
+id = 2
+token = "kTXwfT8J01AM#O3"
 
 btn.addEventListener("click", ()=>{
 
@@ -11,7 +12,7 @@ btn.addEventListener("click", ()=>{
         headers:{
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({keyword, id})
+        body: JSON.stringify({token, id, keyword})
 
 
     })

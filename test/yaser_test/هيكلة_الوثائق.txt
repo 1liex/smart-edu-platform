@@ -1,0 +1,253 @@
+هذي هيكلة الرد الي يجيني من قوقل  و طبعا ما يهمني منهم غير 
+items 
+و الي فيها يكون العنوان و الرابط للوثييقه ذي
+
+طبعا كل ذي الهيكلة ل5 ردود مختلفة من قوقل
+
+{
+    "kind": "customsearch#search",
+    "url": {
+        "type": "application/json",
+        "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+        "request": [
+            {
+                "title": "Google Custom Search - Python list comprehension",
+                "totalResults": "1480",
+                "searchTerms": "Python list comprehension",
+                "count": 5,
+                "startIndex": 1,
+                "inputEncoding": "utf8",
+                "outputEncoding": "utf8",
+                "safe": "off",
+                "cx": "51d40f0ebc9304bb7"
+            }
+        ],
+        "nextPage": [
+            {
+                "title": "Google Custom Search - Python list comprehension",
+                "totalResults": "1480",
+                "searchTerms": "Python list comprehension",
+                "count": 5,
+                "startIndex": 6,
+                "inputEncoding": "utf8",
+                "outputEncoding": "utf8",
+                "safe": "off",
+                "cx": "51d40f0ebc9304bb7"
+            }
+        ]
+    },
+    "context": {
+        "title": "w3result"
+    },
+    "searchInformation": {
+        "searchTime": 0.11495,
+        "formattedSearchTime": "0.11",
+        "totalResults": "1480",
+        "formattedTotalResults": "1,480"
+    },
+    "items": [
+        {
+            "kind": "customsearch#result",
+            "title": "Python - List Comprehension",
+            "htmlTitle": "<b>Python</b> - <b>List Comprehension</b>",
+            "link": "https://www.w3schools.com/python/python_lists_comprehension.asp",
+            "displayLink": "www.w3schools.com",
+            "snippet": "Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java,\u00a0...",
+            "htmlSnippet": "Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, <b>Python</b>, PHP, Bootstrap, Java,&nbsp;...",
+            "formattedUrl": "https://www.w3schools.com/python/python_lists_comprehension.asp",
+            "htmlFormattedUrl": "https://www.w3schools.com/<b>python</b>/<b>python</b>_<b>list</b>s_<b>comprehension</b>.asp",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK28hevOmBJFWCrR_j9haYslGiDqoHd8JVz9UagOLfERG6u8LzMER5mGo&s",
+                        "width": "169",
+                        "height": "193"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "msapplication-tilecolor": "#00a300",
+                        "og:image": "https://www.w3schools.com/images/w3schools_logo_436_2.png",
+                        "og:image:width": "436",
+                        "theme-color": "#ffffff",
+                        "viewport": "width=device-width, initial-scale=1",
+                        "og:image:height": "228",
+                        "og:image:type": "image/png",
+                        "title": "W3Schools.com",
+                        "og:description": "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.",
+                        "format-detection": "telephone=no"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://www.w3schools.com/signup/lynxlogo.svg"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Python List Comprehension",
+            "htmlTitle": "<b>Python List Comprehension</b>",
+            "link": "https://www.w3schools.com/python/gloss_python_list_comprehension.asp",
+            "displayLink": "www.w3schools.com",
+            "snippet": "Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java,\u00a0...",
+            "htmlSnippet": "Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, <b>Python</b>, PHP, Bootstrap, Java,&nbsp;...",
+            "formattedUrl": "https://www.w3schools.com/python/gloss_python_list_comprehension.asp",
+            "htmlFormattedUrl": "https://www.w3schools.com/<b>python</b>/gloss_<b>python</b>_<b>list</b>_<b>comprehension</b>.asp",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK28hevOmBJFWCrR_j9haYslGiDqoHd8JVz9UagOLfERG6u8LzMER5mGo&s",
+                        "width": "169",
+                        "height": "193"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "msapplication-tilecolor": "#00a300",
+                        "og:image": "https://www.w3schools.com/images/w3schools_logo_436_2.png",
+                        "og:image:width": "436",
+                        "theme-color": "#ffffff",
+                        "viewport": "width=device-width, initial-scale=1",
+                        "og:image:height": "228",
+                        "og:image:type": "image/png",
+                        "title": "W3Schools.com",
+                        "og:description": "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.",
+                        "format-detection": "telephone=no"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://www.w3schools.com/signup/lynxlogo.svg"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "W3Schools Exercise - Python List Comprehension",
+            "htmlTitle": "W3Schools Exercise - <b>Python List Comprehension</b>",
+            "link": "https://www.w3schools.com/python/exercise.asp?x=xrcise_lists_comprehension1",
+            "displayLink": "www.w3schools.com",
+            "snippet": "Test what you learned in the chapter: Python List Comprehension by completing 3 relevant exercises. To try more Python Exercises please visit our Python\u00a0...",
+            "htmlSnippet": "Test what you learned in the chapter: <b>Python List Comprehension</b> by completing 3 relevant exercises. To try more Python Exercises please visit our Python&nbsp;...",
+            "formattedUrl": "https://www.w3schools.com/python/exercise.asp?x...lists_comprehension1",
+            "htmlFormattedUrl": "https://www.w3schools.com/<b>python</b>/exercise.asp?x...<b>list</b>s_<b>comprehension</b>1",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYsOtdjoPvAF6TcFFjYNybQ6LwqcnwipuaGAz2p5aFdm4a4y65-IYrB1w9&s",
+                        "width": "311",
+                        "height": "162"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "msapplication-tilecolor": "#00a300",
+                        "og:image": "https://www.w3schools.com/python/exercises/getstarted.jpg",
+                        "og:type": "website",
+                        "og:image:width": "436",
+                        "theme-color": "#ffffff",
+                        "twitter:card": "summary_large_image",
+                        "twitter:title": "W3Schools Python Exercise",
+                        "og:title": "W3Schools Python Exercise",
+                        "og:image:height": "228",
+                        "og:image:type": "image/png",
+                        "og:description": "I completed one of the Python exercises on w3schools.com",
+                        "twitter:image": "https://www.w3schools.com/python/exercises/getstarted.jpg",
+                        "twitter:site": "@w3schools",
+                        "viewport": "width=device-width",
+                        "twitter:description": "I completed a Python exercise on w3schools.com",
+                        "og:url": "https://www.w3schools.com/python/python_exercises.asp"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://www.w3schools.com/python/exercises/getstarted.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Python - Loop Lists",
+            "htmlTitle": "<b>Python</b> - Loop <b>Lists</b>",
+            "link": "https://www.w3schools.com/python/python_lists_loop.asp",
+            "displayLink": "www.w3schools.com",
+            "snippet": "Looping Using List Comprehension. List Comprehension offers the shortest syntax for looping through lists: Example. A short hand for loop that will print all\u00a0...",
+            "htmlSnippet": "Looping Using <b>List Comprehension</b>. <b>List Comprehension</b> offers the shortest syntax for looping through lists: Example. A short hand for loop that will print all&nbsp;...",   
+            "formattedUrl": "https://www.w3schools.com/python/python_lists_loop.asp",
+            "htmlFormattedUrl": "https://www.w3schools.com/<b>python</b>/<b>python</b>_<b>list</b>s_loop.asp",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK28hevOmBJFWCrR_j9haYslGiDqoHd8JVz9UagOLfERG6u8LzMER5mGo&s",
+                        "width": "169",
+                        "height": "193"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "msapplication-tilecolor": "#00a300",
+                        "og:image": "https://www.w3schools.com/images/w3schools_logo_436_2.png",
+                        "og:image:width": "436",
+                        "theme-color": "#ffffff",
+                        "viewport": "width=device-width, initial-scale=1",
+                        "og:image:height": "228",
+                        "og:image:type": "image/png",
+                        "title": "W3Schools.com",
+                        "og:description": "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.",
+                        "format-detection": "telephone=no"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://www.w3schools.com/signup/lynxlogo.svg"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "customsearch#result",
+            "title": "Python Access List Items",
+            "htmlTitle": "<b>Python</b> Access <b>List</b> Items",
+            "link": "https://www.w3schools.com/python/gloss_python_access_list_items.asp",
+            "displayLink": "www.w3schools.com",
+            "snippet": "Related Pages. Python Lists Tutorial Lists Change List Item Loop List Items List Comprehension Check If List Item Exists List Length Add List Items Remove List\u00a0...",
+            "htmlSnippet": "Related Pages. <b>Python</b> Lists Tutorial Lists Change List Item Loop List Items <b>List Comprehension</b> Check If List Item Exists List Length Add List Items Remove List&nbsp;...", 
+            "formattedUrl": "https://www.w3schools.com/python/gloss_python_access_list_items.asp",
+            "htmlFormattedUrl": "https://www.w3schools.com/<b>python</b>/gloss_<b>python</b>_access_<b>list</b>_items.asp",
+            "pagemap": {
+                "cse_thumbnail": [
+                    {
+                        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK28hevOmBJFWCrR_j9haYslGiDqoHd8JVz9UagOLfERG6u8LzMER5mGo&s",
+                        "width": "169",
+                        "height": "193"
+                    }
+                ],
+                "metatags": [
+                    {
+                        "msapplication-tilecolor": "#00a300",
+                        "og:image": "https://www.w3schools.com/images/w3schools_logo_436_2.png",
+                        "og:image:width": "436",
+                        "theme-color": "#ffffff",
+                        "viewport": "width=device-width, initial-scale=1",
+                        "og:image:height": "228",
+                        "og:image:type": "image/png",
+                        "title": "W3Schools.com",
+                        "og:description": "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.",
+                        "format-detection": "telephone=no"
+                    }
+                ],
+                "cse_image": [
+                    {
+                        "src": "https://www.w3schools.com/signup/lynxlogo.svg"
+                    }
+                ]
+            }
+        }
+    ]
+}
