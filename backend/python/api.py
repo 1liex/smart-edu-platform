@@ -9,8 +9,10 @@ from dotenv import load_dotenv
 
 # تحميل المتغيرات من .env
 load_dotenv()
-youtube_api_key = os.getenv("YT_TOKEN")
 access_token = os.getenv("ACCESS_TOKEN")
+youtube_api_key = os.getenv("YT_TOKEN")
+google_token = os.getenv("GOOGLE_TOKEN")
+search_engine_id = os.getenv("SEARCH_ENGINE_ID")
 
 # ========== Functions ==========
 
@@ -56,25 +58,45 @@ def search_youtube(keyword):
                 "link": f"https://www.youtube.com/watch?v={video_id}"
             }
             results.append(dic)
-    
-    return results
+    gg=[results, "video"]
+    return gg
+
+def search_google(keyword):
+    service = build("customsearch", "v1", developerKey=google_token)
+    res = service.cse().list(
+        q=keyword,
+        cx=search_engine_id,
+        num=5  # عدد النتائج
+    ).execute()
+    print(json.dumps(res, indent=4))
+    results = []
+   
+    for item in res.get('items', []):
+        results.append({
+            "title": item['title'],
+            "link": item['link'],
+            "snippet": item['snippet']
+        })
+    print(json.dumps(results, indent=4))
+    gg = [results, "document"]
+    return gg
 
 
 def access_resource_table_in_db(keyword_id, resource_details):
     try:
         db = mysql.connector.connect(
             host="localhost",
-            user="root",
+            user="root1",
             passwd="",
             database="userdb"
         )
         cursor = db.cursor()
 
-        sql = "INSERT INTO resources (title, link, keyword_id) VALUES (%s, %s, %s)"
+        sql = "INSERT INTO resources (title, link, resource_type, keyword_id) VALUES (%s, %s, %s, %s)"
         
         count = 0
         for item in resource_details:
-            values = (item["title"], item["link"], keyword_id)
+            values = (item[0]["title"], item[0]["link"], item[1], keyword_id)
             try:
                 cursor.execute(sql, values)
                 count += 1
@@ -112,7 +134,9 @@ def post_api():
         keyword = data.get("keyword")
 
         yt_resource = search_youtube(keyword)
+        google_resource = search_google(keyword)
         access_resource_table_in_db(keyword_id, yt_resource)
+        access_resource_table_in_db(keyword_id, google_resource)
 
         return jsonify({"status": "success", "message": "Resource added"}), 201
     else:
