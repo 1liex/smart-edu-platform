@@ -1,4 +1,5 @@
 const btn = document.getElementById("btn")
+const btndata =document.getElementById("data")
 
 id = 2
 token = "kTXwfT8J01AM#O3"
@@ -17,3 +18,16 @@ btn.addEventListener("click", ()=>{
 
     })
 });
+
+btndata.addEventListener("click", ()=>{
+
+console.log(name())
+
+
+});
+
+async function name() {
+    const res = await fetch("http://localhost/web_project/backend/php/")
+    const data = await res.json()
+    return data
+}
