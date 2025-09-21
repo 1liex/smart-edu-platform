@@ -58,8 +58,8 @@ def search_youtube(keyword):
                 "link": f"https://www.youtube.com/watch?v={video_id}"
             }
             results.append(dic)
-    gg=[results, "video"]
-    return gg
+    
+    return [results, "video"]
 
 def search_google(keyword):
     service = build("customsearch", "v1", developerKey=google_token)
@@ -78,15 +78,15 @@ def search_google(keyword):
             "snippet": item['snippet']
         })
     print(json.dumps(results, indent=4))
-    gg = [results, "document"]
-    return gg
+    
+    return [results, "document"]
 
 
 def access_resource_table_in_db(keyword_id, resource_details):
     try:
         db = mysql.connector.connect(
             host="localhost",
-            user="root1",
+            user="root",
             passwd="",
             database="userdb"
         )
@@ -95,8 +95,10 @@ def access_resource_table_in_db(keyword_id, resource_details):
         sql = "INSERT INTO resources (title, link, resource_type, keyword_id) VALUES (%s, %s, %s, %s)"
         
         count = 0
-        for item in resource_details:
-            values = (item[0]["title"], item[0]["link"], item[1], keyword_id)
+        results, r_type = resource_details
+
+        for item in results:
+            values = (item["title"], item["link"], r_type, keyword_id)
             try:
                 cursor.execute(sql, values)
                 count += 1

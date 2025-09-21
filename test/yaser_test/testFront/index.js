@@ -15,29 +15,13 @@ function showSection(sectionId) {
 
 // مثال: تحميل كل المحتوى عند بدء الصفحة
 (async () => {
-  await loadSection("homeSec", "/frontend/html_pages/home.html");
-  await loadSection("sinUpSec", "/frontend/html_pages/sinUp.html");
-  
+  await loadSection("home", "home.html");
+  await loadSection("page1", "page1.html");
+  await loadSection("page2", "page2.html")
   
 
   // إظهار أول section افتراضي
-  showSection("homeSec");
-  const sec = document.getElementById("sec")
-  const homeSec = document.getElementById("homeSec")
-  const sinUpSec = document.getElementById("sinUpSec")
-
-
- const sinBtn = document.getElementById("sinBtn")
-
- sinBtn.addEventListener("click", ()=>{
-
-  homeSec.style.display = "none"
-  sinUpSec.style.display = "block"
-
-
- });
-
-
+  showSection("home");
 
 
 
