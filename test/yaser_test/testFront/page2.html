@@ -1,1 +1,104 @@
-<h1>this is page 2</h1>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>كاروسيل 3 بطاقات</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f4;
+      font-family: sans-serif;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 500px; /* يكفي 3 بطايق (150 * 3 + مسافات) */
+      overflow: hidden;
+    }
+
+    .frame {
+      display: flex;
+      gap: 15px;
+      transition: transform 0.5s ease;
+    }
+
+    .card {
+      min-width: 150px;
+      height: 200px;
+      background: #2196f3;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 20px;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .btn.left {
+      left: 5px;
+    }
+
+    .btn.right {
+      right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <button class="btn left" onclick="slide(-1)">&#10094;</button>
+    <div class="frame" id="slider">
+      <div class="card">بطاقة 1</div>
+      <div class="card">بطاقة 2</div>
+      <div class="card">بطاقة 3</div>
+      <div class="card">بطاقة 4</div>
+      <div class="card">بطاقة 5</div>
+      <div class="card">بطاقة 6</div>
+      <div class="card">بطاقة 7</div>
+      <div class="card">بطاقة 8</div>
+    </div>
+    <button class="btn right" onclick="slide(1)">&#10095;</button>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const cards = document.querySelectorAll('.card');
+    const visibleCards = 3; // كم بطاقة تبين بالفريم
+    const cardWidth = cards[0].offsetWidth + 15; // عرض البطاقة + المسافة
+    let currentIndex = 0;
+
+    function slide(direction) {
+      const maxIndex = cards.length - visibleCards; 
+      currentIndex += direction * visibleCards;
+
+      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+      slider.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+    }
+  </script>
+</body>
+</html>
