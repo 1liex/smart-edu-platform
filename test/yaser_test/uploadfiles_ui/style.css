@@ -5,6 +5,9 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --icons-color: #007bff;
+}
 body {
   min-width: 100%;
   min-height: 100vh;
@@ -15,8 +18,8 @@ body {
 
 .container {
   border-radius: 1.5em;
-  height: 60vh;
-  width: 28%;
+  height: 55vh;
+  width: 25%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -28,6 +31,9 @@ body {
   padding: 1.7em;
 }
 
+.head-icon {
+  color: var(--icons-color);
+}
 .cloud-icon {
   border: 1px solid gray;
   border-radius: 50%;
@@ -51,7 +57,7 @@ body {
   border: 0.14em dashed gray;
   border-radius: 1.7em;
   margin: 2em;
-  height: 33%;
+  height: 42%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,4 +77,31 @@ body {
 }
 .icon {
   font-size: 40px;
+  color: var(--icons-color);
+}
+
+.file-border {
+  border: 1px solid gray;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 2em;
+  height: 90px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fa-file {
+  font-size: 2em;
+  color: var(--icons-color);
+}
+
+.file-size-text {
+  color: gray;
+  font-size: 15px;
+}
+
+.file-border-text-holder {
+  margin-left: -4em;
 }
