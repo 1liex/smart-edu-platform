@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/669440efe4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="head">
+        <div class="cloud-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <div class="text-container">
+          <h2>Upload files</h2>
+          <p>Slecet and upload the files of your choice</p>
+        </div>
+        <div class="x-button">
+          <button id="close-btn"><i class="fa-solid fa-x"></i></button>
+        </div>
+      </div>
+      <hr />
+
+      <div class="dotted-border">
+        <div id="file-btn" class="dashed">
+          <label for="fileUpload" class="custom-file">
+            <i
+              class="fa-solid fa-cloud-arrow-up dashed icon"
+              id="cloud-dashed"
+            ></i
+          ></label>
+          <input type="file" id="fileUpload" style="display: none" />
+        </div>
+
+        <h3 id="h3-dashed" class="dashed">
+          Choose a file or drag & drop it here.
+        </h3>
+        <p id="p-dashed" class="dashed">
+          JPEG, PNG, PDF formats, up to 100 MB.
+        </p>
+      </div>
+      <div class="file-container"></div>
+    </div>
+
+    <script src="index.js" defer></script>
+  </body>
+</html>

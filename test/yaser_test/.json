@@ -1,0 +1,84 @@
+{
+  "user": {
+    "id": 1,
+    "name": "ali",
+    "email": "abc@gmail.com",
+    "role": "student"
+  },
+  "teachers": [
+    {
+      "id": 5,
+      "teacherName": "omar",
+      "email": "omar@gmail.com",
+      "files": [
+        {
+          "filename": "python.pdf",
+          "keywords": [
+            {
+              "keyword": "loops in python",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "functions in python",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "classes in python",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            }
+          ]
+        },
+        {
+          "filename": "advanced_python.pdf",
+          "keywords": [
+            {
+              "keyword": "decorators",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "generators",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "context managers",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "teacherName": "sara",
+      "email": "sara@gmail.com",
+      "files": [
+        {
+          "filename": "web_basics.pdf",
+          "keywords": [
+            {
+              "keyword": "html tags",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "css selectors",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            },
+            {
+              "keyword": "javascript basics",
+              "yt": ["ved1", "ved2", "ved3", "ved4", "ved5"],
+              "documents": ["doc1", "doc2", "doc3", "doc4", "doc5"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
