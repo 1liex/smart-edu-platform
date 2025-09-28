@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Files</title>
+    <link rel="stylesheet" href="uploadFiles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="head">
+        <div class="cloud-icon">
+          <i class="fa-solid fa-cloud-arrow-up head-icon"></i>
+        </div>
+        <div class="text-container">
+          <h2>Upload files</h2>
+          <p>Slecet and upload the files of your choice</p>
+        </div>
+        <div class="x-button">
+          <button id="close-btn"><i class="fa-solid fa-x"></i></button>
+        </div>
+      </div>
+      <hr />
+
+      <div class="dotted-border">
+        <div id="file-btn" class="dashed">
+          <label for="fileUpload" class="custom-file">
+            <i
+              class="fa-solid fa-cloud-arrow-up dashed icon"
+              id="cloud-dashed"
+            ></i
+          ></label>
+          <input type="file" id="fileUpload" style="display: none" />
+        </div>
+
+        <h3 id="h3-dashed" class="dashed">
+          Choose a file or drag & drop it here.
+        </h3>
+        <p id="p-dashed" class="dashed">
+          JPEG, PNG, PDF formats, up to 250 MB.
+        </p>
+      </div>
+      <div class="file-container" id="showFilesSec"></div>
+    </div>
+
+    <script defer>
+      const file = document.getElementById("fileUpload");
+      const showFile = document.getElementById("showFilesSec");
+      const closeBtn = document.getElementById("xbutton");
+
+      file.addEventListener("change", () => {
+        const fileData = file.files[0];
+
+        let sizeText = "";
+        const sizeInBytes = fileData.size;
+
+        if (sizeInBytes < 1024 * 1024) {
+          const sizeInKB = (sizeInBytes / 1024).toFixed(2);
+          sizeText = `${sizeInKB} KB`;
+        } else {
+          const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
+          sizeText = `${sizeInMB} MB`;
+        }
+
+        showFile.innerHTML = `
+  <div class="file-border">
+    <i class="fa-solid fa-file"></i>
+
+    <div class="file-border-text-holder">
+      <h3 class="file-name-text">${fileData.name}</h3>
+      <p class="file-size-text">The size is ${sizeText} of 250 MB</p>
+    </div>
+    <div class="x-button" id="xbutton">
+      <button id="close-btn"><i class="fa-solid fa-x" id="gg"></i></button>
+    </div>
+  </div>
+  `;
+      });
+
+      showFile.addEventListener("click", (e) => {
+        if (e.target && e.target.id === "gg") {
+          showFile.innerHTML = "";
+          file.value = "";
+        }
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/669440efe4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
+  </body>
+</html>

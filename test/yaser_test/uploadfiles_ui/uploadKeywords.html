@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="uploadKeywords.css" />
+    <title>Upload Keywords</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clear-all-container">
+        <i
+          class="fa-solid fa-x clear-all-icon"
+          title="clear all"
+          id="del-all-btn"
+        ></i>
+      </div>
+
+      <div class="Keywords-container" id="Keywords-container"></div>
+
+      <input
+        type="text"
+        id="Keywords-entry"
+        class="entrys"
+        placeholder="Enter the keywords"
+      />
+
+      <button class="add-btn" id="add-btn">Add keyword</button>
+    </div>
+
+    <script defer>
+      const keywordContainer = document.getElementById("Keywords-container");
+      const keywordsEntry = document.getElementById("Keywords-entry");
+      const addBtn = document.getElementById("add-btn");
+      const clearAllBtn = document.getElementById("del-all-btn");
+      const clearKeyword = document.getAnimations("del-keyword");
+
+      addBtn.addEventListener("click", () => {
+        keyword = keywordsEntry.value;
+        if (keyword) {
+          keywordContainer.innerHTML += `
+        <div class="Keywords-border">
+            <p>${keyword}</p>
+            <i class="fa-solid fa-x clear-all-icon" title="delet" id="del-keyword"></i>
+        </div>`;
+          keywordsEntry.value = "";
+        }
+      });
+
+      clearAllBtn.addEventListener("click", () => {
+        keywordContainer.innerHTML = "";
+        keywordsEntry.value = "";
+      });
+
+      keywordContainer.addEventListener("click", (e) => {
+        if (e.target && e.target.id === "del-keyword") {
+          e.target.closest(".Keywords-border").remove();
+        }
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/669440efe4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
+  </body>
+</html>
