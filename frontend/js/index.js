@@ -22,6 +22,13 @@ async function loadSection(file, cssFile) {
   }
 }
 
+async function getData() {
+  const res = await fetch("")
+  const data = await res.json()
+  console.log(data)
+  
+}
+
 (async () => {
   await loadSection("/frontend/html_pages/home.html", "/frontend/css/home.css");
 
