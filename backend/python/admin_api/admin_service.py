@@ -2,8 +2,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
 
-def access_db(sql):
-   
+def access_db(sql, params=None, fetch=True):
+    db = None
+    cursor = None
     try:
         db = mysql.connector.connect(
             host="localhost",
@@ -11,23 +12,26 @@ def access_db(sql):
             password="",
             database="userdb"
         )
-        cursor = db.cursor(dictionary=True)  # عشان يرجع النتائج كـ dict
-       
-        cursor.execute(sql)
-        results = cursor.fetchall()
-        return results
+        cursor = db.cursor(dictionary=True)
+        
+        if params:
+            cursor.execute(sql, params)
+        else:
+            cursor.execute(sql)
+        
+        if fetch:
+            return cursor.fetchall()
+        else:
+            db.commit()
+            return True
     except Exception as e:
         print(e)
-        return []
+        return [] if fetch else False
     finally:
         if cursor:
             cursor.close()
         if db:
             db.close()
-
-def change_role_in_db(user_id, new_role):
-    pass
-
 
 app = Flask(__name__)
 CORS(app)
@@ -39,8 +43,20 @@ def fetch_all_users():
 
 @app.route("/API/admin/post", methods=["POST"])
 def change_role():
-    # data should be like this {"user_id": "1", "new_role": "teacher"}
     data = request.get_json()
+    user_id = data.get("user_id")
+    role = data.get("new_role")
+
+    if not user_id or not role:
+        return jsonify({"error": "Missing user_id or new_role"}), 400
+
+    sql = "UPDATE users SET role = %s WHERE id = %s"
+    result = access_db(sql, params=(role, user_id), fetch=False)
+
+    if result:
+        return jsonify({"status": "ok"}), 200
+    else:
+        return jsonify({"error": "Failed to update role"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
