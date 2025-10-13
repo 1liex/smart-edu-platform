@@ -14,11 +14,21 @@ async function loadSection(file, cssFile) {
 
   // إضافة CSS الجديد
   if (cssFile) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = cssFile;
-    link.classList.add("dynamic-css"); // عشان نقدر نحذفه بسهولة بعدين
-    document.head.appendChild(link);
+    if (typeof cssFile === "object") {
+      cssFile.forEach((elements) => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = elements;
+        link.classList.add("dynamic-css"); // عشان نقدر نحذفه بسهولة بعدين
+        document.head.appendChild(link);
+      });
+    } else {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = cssFile;
+      link.classList.add("dynamic-css"); // عشان نقدر نحذفه بسهولة بعدين
+      document.head.appendChild(link);
+    }
   }
 }
 
@@ -54,6 +64,7 @@ let data = [];
     data = await res.json();
     if (data.error) {
       console.log(data.error);
+      alert(data.error);
     } else {
       await loadSection(
         "/frontend/html_pages/content.html",
@@ -106,9 +117,16 @@ let data = [];
       });
 
       if (user.role === "teacher") {
-        console.log("hi teacher");
+        const addFiles = document.getElementById("add-files");
+        addFiles.style.display = "felx";
+        addFiles.addEventListener("click", async () => {
+          await loadSection("/frontend/uploadfiles_ui/index.html", [
+            "/frontend/uploadfiles_ui/uploadFiles.css",
+            "/frontend/uploadfiles_ui/uploadKeywords.css",
+          ]);
+        });
       } else {
-        console.log("u r just student");
+        document.getElementById("add-files").style.display = "none";
       }
       userNameOnNaveBare.innerHTML += `${user.name}`;
       userNameOnNaveBare.addEventListener("click", () => {
