@@ -24,12 +24,6 @@ async function loadSection(file, cssFile) {
 
 let data = [];
 
-async function getData() {
-  const res = await fetch("");
-  data = await res.json();
-  console.log(data);
-}
-
 (async () => {
   await loadSection("/frontend/html_pages/home.html", "/frontend/css/home.css");
 
@@ -74,24 +68,71 @@ async function getData() {
       const teachers = data.teachers;
       const user = data.user;
 
+      frame.innerHTML = "";
+
       teachers.forEach((el) => {
-        frame.innerHTML += `<div class="card">
-          <div class="circle">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <h3>برمجة الويب المتقدمة</h3>
-          <p>D.${el.name}</p>
-          <a href="view-content.html" class="contact-btn">View</a>
-        </div>`;
+        const options =
+          el.files && el.files.length
+            ? el.files
+                .map(
+                  (f) =>
+                    `<option value="${f.file_id}" class="op">${f.file_name}</option>`
+                )
+                .join("")
+            : `<option value="">لا يوجد ملفات</option>`;
+
+        // كل select نعطيه class و data attribute عشان نقدر نتعامل معه لاحقًا
+        frame.innerHTML += `
+<div class="card">
+  <div class="circle">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+      />
+    </svg>
+  </div>
+  <p>D. ${el.name}</p>
+
+  <div class="btn-sel">
+    <select class="file-select" data-teacher-id="${el.id}">
+      <option value="">اختر ملف</option>
+      ${options}
+    </select>
+    <a href="#" class="contact-btn">View</a>
+  </div>
+</div>
+
+    `;
       });
+
       if (user.role === "teacher") {
         console.log("hi teacher");
       } else {
         console.log("u r just student");
       }
       userNameOnNaveBare.innerHTML += `${user.name}`;
+      userNameOnNaveBare.addEventListener("click", () => {
+        console.log("log out");
+      });
       console.log(data);
+
+      document.querySelectorAll(".contact-btn").forEach((elements) => {
+        elements.addEventListener("click", () => {
+          const op = document.querySelectorAll(".op");
+          console.log(op);
+        });
+      });
     }
+
+    document.body.addEventListener("click", async (e) => {
+      if (e.target && e.target.id === "homeIcone") {
+        await loadSection(
+          "/frontend/html_pages/content.html",
+          "/frontend/css/content.css"
+        );
+        showContent();
+      }
+    });
   }
 
   document.body.addEventListener("click", async (e) => {
@@ -112,6 +153,7 @@ async function getData() {
         "/frontend/html_pages/logIn.html",
         "/frontend/css/login.css"
       );
+
       const form = document.getElementById("form");
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -120,13 +162,6 @@ async function getData() {
         loginData = { email: email, password: password };
         await logIn(loginData);
       });
-    }
-
-    if (e.target && e.target.id === "homeIcone") {
-      await loadSection(
-        "/frontend/html_pages/home.html",
-        "/frontend/css/home.css"
-      );
     }
 
     if (e.target && e.target.id === "viewContent") {
