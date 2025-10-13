@@ -1,83 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verify Code</title>
-    <link rel="stylesheet" href="verify.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="logo-container">
-          <img class="brand-logo-img" src="project2.png" alt="Logo" />
-        </div>
-        <div class="search-bar">
-          <form class="search-form">
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search course ..."
-            />
-            <button type="submit" class="search-button" aria-label="Search">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M9.5 3a6.5 6.5 0 015.2 10.2l5.1 5.1-1.4 1.4-5.1-5.1A6.5 6.5 0 119.5 3zm0 2a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"
-                />
-              </svg>
-            </button>
-          </form>
-        </div>
-        <nav class="nav-right" id="navMenu">
-          <a class="home-btn" href="home.html" aria-label="Home">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 3l9 7v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H11v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10l9-7z"
-              />
-            </svg>
-          </a>
-          <a class="btn-link" href="index2.html">Log In</a>
-          <a class="btn-link" href="index.html">Sign Up</a>
-        </nav>
-        <button class="burger-menu" id="burgerBtn" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Code</title>
+  <link rel="stylesheet" href="verify.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="burger-menu" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="logo-container">
+        <a href="home.html">
+          <img src="/frontend/assets/project2.png" alt="Library logo" class="brand-logo-img">
+        </a>
       </div>
-    </header>
+      <div class="search-bar">
+        <form action="search.html" method="get" class="search-form">
+          <input type="search" name="q" class="search-input" placeholder="Search course ...">
+          <button type="submit" class="search-button" aria-label="Search">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          </button>
+        </form>
+      </div>
+      <nav class="nav-right" id="navMenu">
+        <a class="home-btn" href="#" aria-label="Home" id="homeIcone">
+          <svg viewBox="0 0 24 24"><path d="M12 3l9 7v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H11v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10l9-7z"/></svg>
+        </a>
+        <a class="btn-link" href="#" id="login">Log In</a>
+        <a class="btn-link" href="#" id="signin">Sign Up</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="spacer"></div>
+  <div class="spacer"></div>
 
-    <main>
-      <h2>Verification Code</h2>
-      <p class="info-text">Enter the 6-digit code we sent to your email.</p>
-      <form
-        class="verify-form"
-        action="/api/verify"
-        method="post"
-        autocomplete="off"
-      >
-        <div class="code-inputs">
-          <input type="text" name="d1" maxlength="1" required pattern="[0-9]" />
-          <input type="text" name="d2" maxlength="1" required pattern="[0-9]" />
-          <input type="text" name="d3" maxlength="1" required pattern="[0-9]" />
-          <input type="text" name="d4" maxlength="1" required pattern="[0-9]" />
-          <input type="text" name="d5" maxlength="1" required pattern="[0-9]" />
-          <input type="text" name="d6" maxlength="1" required pattern="[0-9]" />
-        </div>
-        <div class="actions">
-          <button type="submit" class="submit-btn">Verify Code</button>
-        </div>
-      </form>
-      <a href="forgot.html" class="back-btn">Edit Username or Email</a>
-    </main>
-
-    <script>
-      document
-        .getElementById("burgerBtn")
-        .addEventListener("click", function () {
-          this.classList.toggle("active");
-          document.getElementById("navMenu").classList.toggle("active");
-        });
-    </script>
-  </body>
+  <main>
+    <h2>Verification Code</h2>
+    <p class="info-text">Enter the 6-digit code we sent to your email.</p>
+    <form class="verify-form" action="/api/verify" method="post">
+      <div class="code-inputs">
+        <input type="text" maxlength="1" pattern="[0-9]">
+        <input type="text" maxlength="1" pattern="[0-9]">
+        <input type="text" maxlength="1" pattern="[0-9]">
+        <input type="text" maxlength="1" pattern="[0-9]">
+        <input type="text" maxlength="1" pattern="[0-9]">
+        <input type="text" maxlength="1" pattern="[0-9]">
+      </div>
+      <button type="submit" class="submit-btn">Verify Code</button>
+    </form>
+    <a href="forgot.html" class="back-btn">Edit Username or Email</a>
+  </main>
+</body>
 </html>

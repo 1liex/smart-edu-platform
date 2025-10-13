@@ -25,9 +25,11 @@ body {
   font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header */
 .site-header {
   position: fixed;
   top: 0;
@@ -35,7 +37,7 @@ body {
   right: 0;
   background: #f2f2f2;
   box-shadow: var(--shadow);
-  z-index: 10;
+  z-index: 100;
 }
 
 .header-inner {
@@ -216,7 +218,6 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Main Content */
 .spacer {
   height: 80px;
 }
@@ -226,6 +227,12 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
+
+.page-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -333,6 +340,9 @@ body {
   padding: 20px 22px;
   color: inherit;
   transition: transform .15s ease, background .15s ease;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
 }
 
 .cta-card:hover {
@@ -476,9 +486,11 @@ body {
 .social-btn.fb {
   background: #1877f2;
 }
+
 .social-btn.fb svg {
   fill: white;
 }
+
 .social-btn.fb:hover {
   background: #166fe5;
 }
@@ -486,9 +498,11 @@ body {
 .social-btn.tw {
   background: #000000;
 }
+
 .social-btn.tw svg {
   fill: white;
 }
+
 .social-btn.tw:hover {
   background: #333333;
 }
@@ -496,9 +510,11 @@ body {
 .social-btn.yt {
   background: #ff0000;
 }
+
 .social-btn.yt svg {
   fill: white;
 }
+
 .social-btn.yt:hover {
   background: #cc0000;
 }
@@ -506,9 +522,11 @@ body {
 .social-btn.ig {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
+
 .social-btn.ig svg {
   fill: white;
 }
+
 .social-btn.ig:hover {
   opacity: 0.9;
 }
@@ -551,51 +569,74 @@ body {
   border-color: var(--brand);
 }
 
-/* Footer */
 .site-footer {
-  background: #f2f2f2;
+  width: 100%;
+  background: transparent;
+  padding: 20px 16px;
   border-top: 1px solid var(--border);
   text-align: center;
 }
 
 .site-footer .container {
   display: inline-block;
-  max-width: none; 
-  margin: 0;        
+  max-width: none;
+  margin: 0;
   padding: 0 1rem;
 }
 
-.footer-inner {
-  max-width: 1200px;
+.site-footer .footer-inner {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 10px 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2px;
-  text-align: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
-/* Media Queries */
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-left .copyright {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.site-footer .btn-link {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.copyright {
+  font-size: 14px;
+  margin: 0;
+  color: var(--muted);
+}
+
 @media (max-width: 1200px) {
-  .search-bar {
-    margin-left: 150px;
-  }
-  .search-form {
-    max-width: 520px;
-    min-width: 380px;
-  }
+  .search-bar { margin-left: 150px; }
+  .search-form { max-width: 520px; min-width: 380px; }
 }
 
 @media (max-width: 1024px) {
-  .search-bar {
-    margin-left: 100px;
-  }
-  .search-form {
-    max-width: 480px;
-    min-width: 350px;
-  }
+  .search-bar { margin-left: 100px; }
+  .search-form { max-width: 480px; min-width: 350px; }
 }
 
 @media (max-width: 768px) {
@@ -608,87 +649,103 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 10px 16px;
+    gap: 12px;
   }
   
   .nav-right {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #f2f2f2;
-    box-shadow: var(--shadow);
+    position: fixed;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: #fff;
     flex-direction: column;
-    padding: 10px;
-    gap: 6px;
+    align-items: stretch;
+    padding: 20px;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border-radius: 16px;
     z-index: 100;
   }
   
-  .nav-right.active {
-    display: flex;
-  }
+  .nav-right.active { display: flex; }
   
-  .btn-link, .home-btn {
+  .btn-link {
     width: 100%;
-    max-width: 150px;
-    justify-content: center;
-    margin: 0 auto 4px;
-    padding: 6px 12px;
-    font-size: 12px;
-    height: 32px;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
   }
   
-  .home-btn {
-    width: 32px;
-    height: 32px;
-    max-width: 32px;
+  .btn-link:hover {
+    background: #e8e8e8;
+  }
+  
+  .nav-right .home-btn {
+    width: 56px;
+    height: 56px;
+    margin: 8px auto 0;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 28px;
+  }
+  
+  .nav-right .home-btn svg {
+    width: 24px;
+    height: 24px;
   }
   
   .search-bar {
     order: 2;
     flex: 1;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: none;
+    margin: 0 12px;
     justify-content: center;
   }
   
   .search-form {
+    max-width: 100%;
     min-width: 0;
     width: 100%;
-    max-width: 200px;
-    height: 32px;
+    height: 38px;
   }
   
   .search-button {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
   }
   
   .search-button svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
   
   .search-input {
-    font-size: 12px;
-    padding: 0 8px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+  
+  .search-input::placeholder {
+    font-size: 13px;
   }
   
   .logo-container {
     order: 3;
-    flex-shrink: 0;
   }
   
   .brand-logo-img {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
   }
   
   .spacer {
-    height: 60px;
+    height: 65px;
   }
   
   .role-cards {
@@ -699,66 +756,55 @@ body {
   }
   
   .role-card {
-    padding: 20px 12px;
+    padding: 20px 16px;
     font-size: 14px;
-    min-width: 0;
+  }
+  
+  .role-card .role-title {
+    font-size: 18px;
+  }
+  
+  .role-card .role-desc {
+    font-size: 14px;
   }
   
   .bottom-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
-    max-width: 100%;
   }
   
   .card.small {
     padding: 16px;
-    min-height: 120px;
+    min-height: auto;
   }
   
   .card.small h2 {
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 6px;
   }
   
   .contact-block {
-    gap: 6px;
-    max-width: 180px;
+    gap: 4px;
   }
   
   .row {
-    font-size: 13px;
-    gap: 6px;
-  }
-  
-  .row.email,
-  .row.phone {
-    max-width: 160px;
-  }
-  
-  .row.email span,
-  .row.phone .phone-text {
-    font-size: 13px;
-  }
-  
-  .icon {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .row.social {
     gap: 4px;
-    max-width: 140px;
-    margin-top: 4px;
+    font-size: 12px;
+  }
+  
+  .row.email span, 
+  .row.phone .phone-text {
+    font-size: 12px;
   }
   
   .social-btn {
     width: 26px;
     height: 26px;
+    border-radius: 6px;
   }
   
   .social-btn svg {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
   }
   
   .links-grid {
@@ -767,71 +813,103 @@ body {
   }
   
   .link-a {
+    font-size: 12px;
     padding: 8px 10px;
+  }
+  
+  .footer-inner {
+    padding: 6px 12px;
     font-size: 12px;
   }
 }
 
+@media (max-width: 640px) {
+  .site-footer .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .footer-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .site-footer .btn-link {
+    max-width: 140px;
+    width: auto;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 480px) {
-  .burger-menu {
-    width: 28px;
-    height: 28px;
-    gap: 2px;
-  }
-  
-  .burger-menu span {
-    width: 16px;
-    height: 2px;
-  }
-  
   .header-inner {
-    padding: 6px 8px;
+    padding: 8px 12px;
   }
   
   .nav-right {
-    padding: 8px;
-    gap: 4px;
+    top: 55px;
+    width: 85%;
+    max-width: 350px;
+    padding: 16px;
   }
   
-  .btn-link, .home-btn {
-    max-width: 120px;
-    font-size: 10px;
-    height: 28px;
-    padding: 4px 8px;
+  .btn-link {
+    padding: 14px 18px;
+    font-size: 15px;
   }
   
-  .home-btn {
-    width: 28px;
-    height: 28px;
-    max-width: 28px;
+  .nav-right .home-btn {
+    width: 50px;
+    height: 50px;
   }
   
   .search-form {
-    max-width: 160px;
-    height: 28px;
+    height: 34px;
   }
   
   .search-button {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
   }
   
   .search-button svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
   
   .search-input {
-    font-size: 10px;
-    padding: 0 6px;
+    font-size: 13px;
+    padding: 0 10px;
+  }
+  
+  .search-input::placeholder {
+    font-size: 12px;
   }
   
   .brand-logo-img {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
   }
   
   .spacer {
-    height: 50px;
+    height: 60px;
   }
+  
+  .hero {
+    padding: 6px;
+    margin: 4px 0 6px;
+  }
+  
+  .hero h1 { font-size: 14px; }
+  .hero .lead { font-size: 11px; }
+  .role-card .role-title { font-size: 16px; }
+  .role-card .role-desc { font-size: 12px; }
+  .cta-title { font-size: 14px; }
+  .cta-desc { font-size: 12px; }
 }

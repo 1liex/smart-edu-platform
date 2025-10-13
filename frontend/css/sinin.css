@@ -49,24 +49,24 @@ body {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  width: 40px;
-  height: 40px;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .burger-menu span {
-  width: 25px;
-  height: 3px;
+  width: 18px;
+  height: 2px;
   background: var(--text);
-  border-radius: 2px;
+  border-radius: 1px;
   transition: all 0.3s ease;
 }
 
 .burger-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
 
 .burger-menu.active span:nth-child(2) {
@@ -74,7 +74,7 @@ body {
 }
 
 .burger-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(4px, -4px);
 }
 
 .nav-right {
@@ -217,7 +217,7 @@ body {
 
 main {
   max-width: 560px;
-  margin: 0 auto;
+  margin: 8em auto;
   padding: 40px 22px;
   background: var(--card);
   box-shadow: var(--shadow);
@@ -371,21 +371,25 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    gap: 10px;
+    padding: 10px 16px;
+    gap: 12px;
   }
   
   .nav-right {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #f2f2f2;
-    box-shadow: var(--shadow);
+    position: fixed;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: #fff;
     flex-direction: column;
-    padding: 15px;
-    gap: 10px;
+    align-items: stretch;
+    padding: 20px;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border-radius: 16px;
     z-index: 100;
   }
   
@@ -393,32 +397,53 @@ h2 {
     display: flex;
   }
   
-  .btn-link, .home-btn {
+  .btn-link {
     width: 100%;
-    max-width: none;
-    justify-content: center;
-    margin-bottom: 8px;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+  }
+  
+  .btn-link:hover {
+    background: #e8e8e8;
+  }
+  
+  .nav-right .home-btn {
+    width: 56px;
+    height: 56px;
+    margin: 8px auto 0;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 28px;
+  }
+  
+  .nav-right .home-btn svg {
+    width: 24px;
+    height: 24px;
   }
   
   .search-bar {
     order: 2;
     flex: 1;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 0 12px;
     max-width: none;
     justify-content: center;
   }
   
   .search-form {
+    max-width: 100%;
     min-width: 0;
     width: 100%;
-    max-width: 300px;
-    height: 40px;
+    height: 38px;
   }
   
   .search-button {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
   
   .search-button svg {
@@ -427,8 +452,12 @@ h2 {
   }
   
   .search-input {
-    font-size: 15px;
+    font-size: 14px;
     padding: 0 12px;
+  }
+  
+  .search-input::placeholder {
+    font-size: 13px;
   }
   
   .logo-container {
@@ -437,12 +466,12 @@ h2 {
   }
   
   .brand-logo-img {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
   }
   
   .spacer {
-    height: 70px;
+    height: 65px;
   }
   
   main {
@@ -477,14 +506,30 @@ h2 {
     padding: 8px 12px;
   }
   
+  .nav-right {
+    top: 55px;
+    width: 85%;
+    max-width: 350px;
+    padding: 16px;
+  }
+  
+  .btn-link {
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+  
+  .nav-right .home-btn {
+    width: 50px;
+    height: 50px;
+  }
+  
   .search-form {
-    max-width: 250px;
-    height: 38px;
+    height: 34px;
   }
   
   .search-button {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
   }
   
   .search-button svg {
@@ -493,17 +538,21 @@ h2 {
   }
   
   .search-input {
-    font-size: 14px;
+    font-size: 13px;
     padding: 0 10px;
   }
   
+  .search-input::placeholder {
+    font-size: 12px;
+  }
+  
   .brand-logo-img {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
   
   .spacer {
-    height: 65px;
+    height: 60px;
   }
   
   main {
@@ -533,122 +582,5 @@ h2 {
   
   .error-text {
     font-size: 13px;
-  }
-}
-.burger-menu {
-  display: none;
-  flex-direction: column;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  width: 32px;
-  height: 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-}
-
-.burger-menu span {
-  width: 18px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 1px;
-  transition: all 0.3s ease;
-}
-
-.burger-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 4px);
-}
-
-.burger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -4px);
-}
-
-@media (max-width: 768px) {
-  .burger-menu {
-    display: flex;
-    order: 1;
-  }
-  
-  .header-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    gap: 8px;
-  }
-  
-  .nav-right {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #f2f2f2;
-    box-shadow: var(--shadow);
-    flex-direction: column;
-    padding: 10px;
-    gap: 6px;
-    z-index: 100;
-  }
-  
-  .nav-right.active {
-    display: flex;
-  }
-  
-  .btn-link, .home-btn {
-    width: 100%;
-    max-width: 150px;
-    justify-content: center;
-    margin: 0 auto 4px;
-    padding: 6px 12px;
-    font-size: 12px;
-    height: 32px;
-  }
-  
-  .home-btn {
-    width: 32px;
-    height: 32px;
-    max-width: 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .burger-menu {
-    width: 28px;
-    height: 28px;
-    gap: 2px;
-  }
-  
-  .burger-menu span {
-    width: 16px;
-    height: 2px;
-  }
-  
-  .header-inner {
-    padding: 6px 8px;
-  }
-  
-  .nav-right {
-    padding: 8px;
-    gap: 4px;
-  }
-  
-  .btn-link, .home-btn {
-    max-width: 120px;
-    font-size: 10px;
-    height: 28px;
-    padding: 4px 8px;
-  }
-  
-  .home-btn {
-    width: 28px;
-    height: 28px;
-    max-width: 28px;
   }
 }

@@ -1,6 +1,8 @@
 <?php
-session_start();
 header('Content-Type: application/json; charset=UTF-8');
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // ✅ 1. الاتصال بقاعدة البيانات
 $host = "localhost";
@@ -13,14 +15,15 @@ if ($conn->connect_error) {
     die(json_encode(["error" => "Database connection failed"]));
 }
 
-// ✅ 2. جلب بيانات المستخدم الحالي من الجلسة (بعد تسجيل الدخول)
-if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
-    echo json_encode(["error" => "User not logged in"]);
+// ✅ 2. استبدال الجلسة: جلب بيانات البريد والباسورد من JSON
+$input = json_decode(file_get_contents('php://input'), true);
+$email = $input['email'] ?? null;
+$passInput = $input['password'] ?? null;
+
+if (!$email || !$passInput) {
+    echo json_encode(["error" => "Email or password missing"]);
     exit;
 }
-
-$email = $_SESSION['email'];
-$passInput = $_SESSION['password']; // الباسورد المخزن في الجلسة (يفضل يكون مخزن مشفر)
 
 // ✅ 3. الحصول على بيانات المستخدم الحالي
 $userQuery = $conn->prepare("SELECT id, name, email, role, password FROM users WHERE email = ?");
@@ -36,14 +39,15 @@ if ($userResult->num_rows == 0) {
 $userData = $userResult->fetch_assoc();
 
 // ✅ 4. التحقق من كلمة المرور
-// نفترض أن كلمة المرور المخزنة في DB مشفرة باستخدام password_hash
-if (!password_verify($passInput, $userData['password'])) {
+if ($passInput !== $userData['password']) {
     echo json_encode(["error" => "Invalid password"]);
     exit;
 }
 
 // ✅ 5. جلب جميع المعلمين وملفاتهم والكلمات والمصادر
 $teachers = [];
+
+// ... الكود اللي عندك بالضبط من هنا فصاعدًا بدون أي تغيير
 
 $teacherQuery = "
     SELECT 

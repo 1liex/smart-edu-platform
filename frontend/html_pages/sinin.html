@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In Page</title>
+  <link rel="stylesheet" href="sinin.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="burger-menu" id="burgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-right" id="navMenu">
+        <a class="btn-link" href="#">Sign In</a>
+        <a class="btn-link" href="#" id="login">Log In</a>
+        <a class="home-btn" href="#" aria-label="Home" id="homeIcone">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3l9 7v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H11v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10l9-7z"/>
+          </svg>
+        </a>
+      </nav>
+      
+      <div class="search-bar">
+        <form action="search.html" method="get" class="search-form">
+          <button type="submit" class="search-button" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </button>
+          <input type="search" name="q" class="search-input" placeholder="Search course ..." required />
+        </form>
+      </div>
+      
+      <div class="logo-container">
+        <img class="brand-logo-img" src="/frontend/assets/project2.png" alt="Smart Educational Library logo" />
+      </div>
+    </div>
+  </header>
+
+  <div class="spacer"></div>
+  
+  <main>
+    <h2>Sign In Form</h2>
+    <form class="signup-form" action="/api/signup" method="post" autocomplete="on">
+      <div class="field">
+        <div class="field-top">
+          <label class="label" for="username">Username</label>
+        </div>
+        <input id="username" type="text" name="username" placeholder="Username" required minlength="4" maxlength="20" pattern="^[a-zA-Z0-9]{4,20}$" aria-describedby="username-err" inputmode="latin" />
+        <small id="username-err" class="error-text">Use 4 to 20 letters or digits</small>
+      </div>
+      <div class="field">
+        <div class="field-top">
+          <label class="label" for="email">Email</label>
+        </div>
+        <input id="email" type="email" name="email" placeholder="Email" required aria-describedby="email-err" autocomplete="email" />
+        <small id="email-err" class="error-text">Please enter a valid email address</small>
+      </div>
+     
+      
+<div class="field">
+  <div class="field-top">
+    <label class="label" for="password">Password</label>
+  </div>
+  <input
+    id="password"
+    type="password"
+    name="password"
+    placeholder="Password"
+    required
+    minlength="8"
+    pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$"
+    aria-describedby="password-err"
+    autocomplete="new-password"
+  />
+  <small id="password-err" class="error-text">
+     Must include upper, lower, number, and special character
+  </small>
+</div>
+
+      
+      <div class="actions">
+        <button type="submit" class="submit-btn" id="singInBtn">Sign In</button>
+      </div>
+      <div class="terms">
+        By signing up you agree to our <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
