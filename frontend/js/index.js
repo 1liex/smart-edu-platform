@@ -12,21 +12,20 @@ async function loadSection(file, cssFile) {
     .querySelectorAll("link.dynamic-css")
     .forEach((link) => link.remove());
 
-  // إضافة CSS الجديد
   if (cssFile) {
     if (typeof cssFile === "object") {
       cssFile.forEach((elements) => {
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = elements;
-        link.classList.add("dynamic-css"); // عشان نقدر نحذفه بسهولة بعدين
+        link.classList.add("dynamic-css");
         document.head.appendChild(link);
       });
     } else {
       const link = document.createElement("link");
       link.rel = "stylesheet";
       link.href = cssFile;
-      link.classList.add("dynamic-css"); // عشان نقدر نحذفه بسهولة بعدين
+      link.classList.add("dynamic-css");
       document.head.appendChild(link);
     }
   }
@@ -92,7 +91,6 @@ let data = [];
                 .join("")
             : `<option value="">لا يوجد ملفات</option>`;
 
-        // كل select نعطيه class و data attribute عشان نقدر نتعامل معه لاحقًا
         frame.innerHTML += `
 <div class="card">
   <div class="circle">
@@ -124,6 +122,7 @@ let data = [];
             "/frontend/uploadfiles_ui/uploadFiles.css",
             "/frontend/uploadfiles_ui/uploadKeywords.css",
           ]);
+          document.body.style.direction = "ltr";
         });
       } else {
         document.getElementById("add-files").style.display = "none";
@@ -149,6 +148,20 @@ let data = [];
           "/frontend/css/content.css"
         );
         showContent();
+      }
+
+      if (e.target && e.target.id == "GoBack") {
+        document
+          .getElementById("GoBack")
+          .addEventListener("click", async () => {
+            await loadSection(
+              "/frontend/html_pages/content.html",
+              "/frontend/css/content.css"
+            );
+
+            showContent();
+            document.body.style.direction = "rtl";
+          });
       }
     });
   }
@@ -207,6 +220,112 @@ let data = [];
         "/frontend/html_pages/verify.html",
         "/frontend/css/verify.css"
       );
+    }
+
+    if (
+      (e.target && e.target.id === "hide") ||
+      (e.target && e.target.id === "show")
+    ) {
+      const passFeld = document.getElementById("password");
+      const hide = document.getElementById("hide");
+      const show = document.getElementById("show");
+
+      if (passFeld.type === "password") {
+        passFeld.type = "text";
+        hide.style.display = "none";
+        show.style.display = "flex";
+      } else {
+        passFeld.type = "password";
+        hide.style.display = "flex";
+        show.style.display = "none";
+      }
+    }
+
+    if (e.target && e.target.id === "switch-btn") {
+      const fileContainer = document.getElementById("container");
+      const keywordContainer = document.getElementById("container-keyword");
+      const switchBtn = document.getElementById("switch-btn");
+
+      if (switchBtn.textContent === "Files section") {
+        fileContainer.style.display = "flex";
+        keywordContainer.style.display = "none";
+        switchBtn.textContent = "Keywords section";
+      } else {
+        fileContainer.style.display = "none";
+        keywordContainer.style.display = "flex";
+        switchBtn.textContent = "Files section";
+      }
+    }
+
+    if (e.target && e.target.id === "add-btn") {
+      const keywordContainer = document.getElementById("Keywords-container");
+      const keywordsEntry = document.getElementById("Keywords-entry");
+      const addBtn = document.getElementById("add-btn");
+      const clearAllBtn = document.getElementById("del-all-btn");
+
+      addBtn.addEventListener("click", () => {
+        keyword = keywordsEntry.value;
+        if (keyword) {
+          keywordContainer.innerHTML += `
+        <div class="Keywords-border">
+            <p>${keyword}</p>
+            <i class="fa-solid fa-x clear-all-icon" title="delet" id="del-keyword"></i>
+        </div>`;
+          keywordsEntry.value = "";
+        }
+      });
+
+      clearAllBtn.addEventListener("click", () => {
+        keywordContainer.innerHTML = "";
+        keywordsEntry.value = "";
+      });
+
+      keywordContainer.addEventListener("click", (e) => {
+        if (e.target && e.target.id === "del-keyword") {
+          e.target.closest(".Keywords-border").remove();
+        }
+      });
+    }
+
+    if (e.target && e.target.id === "fileUpload") {
+      const file = document.getElementById("fileUpload");
+      const showFile = document.getElementById("showFilesSec");
+
+      file.addEventListener("change", () => {
+        const fileData = file.files[0];
+
+        let sizeText = "";
+        const sizeInBytes = fileData.size;
+
+        if (sizeInBytes < 1024 * 1024) {
+          const sizeInKB = (sizeInBytes / 1024).toFixed(2);
+          sizeText = `${sizeInKB} KB`;
+        } else {
+          const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
+          sizeText = `${sizeInMB} MB`;
+        }
+
+        showFile.innerHTML = `
+  <div class="file-border">
+    <i class="fa-solid fa-file"></i>
+
+    <div class="file-border-text-holder">
+      <h3 class="file-name-text">${fileData.name}</h3>
+      <p class="file-size-text">The size is ${sizeText} of 250 MB</p>
+    </div>
+    <div class="x-button" id="xbutton">
+      <button id="close-btn"><i class="fa-solid fa-x" id="clear-file"></i></button>
+    </div>
+  </div>
+  `;
+      });
+
+      showFile.addEventListener("click", (e) => {
+        if (e.target && e.target.id === "clear-file") {
+          showFile.innerHTML = "";
+          file.value = "";
+        }
+      });
     }
   });
 })();

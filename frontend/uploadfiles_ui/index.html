@@ -8,178 +8,94 @@
     <link rel="stylesheet" href="uploadKeywords.css" />
   </head>
   <body>
-    
+    <header>
+      <i class="fa-solid fa-arrow-left" id="GoBack"></i>
+    </header>
     <div class="big-container">
-        
-        <div class="border">
-            <div class="btn-switch-containder">
-            <button class="switch-btn" id="switch-btn">Files section</button>
+      <div class="border">
+        <div class="btn-switch-containder">
+          <button class="switch-btn" id="switch-btn">Keywords section</button>
         </div>
-        
-      <div class="container" id="container" style="display: none">
-        <div class="head">
-          <div class="cloud-icon">
-            <i class="fa-solid fa-cloud-arrow-up head-icon"></i>
+
+        <div class="container" id="container" style="display: flex">
+          <div class="head">
+            <div class="cloud-icon">
+              <i class="fa-solid fa-cloud-arrow-up head-icon"></i>
+            </div>
+            <div class="text-container">
+              <h2>Upload files</h2>
+              <p>Slecet and upload the files of your choice</p>
+            </div>
           </div>
-          <div class="text-container">
-            <h2>Upload files</h2>
-            <p>Slecet and upload the files of your choice</p>
+          <hr />
+
+          <div class="dotted-border">
+            <div id="file-btn" class="dashed">
+              <label for="fileUpload" class="custom-file">
+                <i
+                  class="fa-solid fa-cloud-arrow-up dashed icon"
+                  id="cloud-dashed"
+                ></i
+              ></label>
+              <input type="file" id="fileUpload" style="display: none" />
+            </div>
+
+            <h3 id="h3-dashed" class="dashed">
+              Choose a file or drag & drop it here.
+            </h3>
+            <p id="p-dashed" class="dashed">
+              JPEG, PNG, PDF formats, up to 250 MB.
+            </p>
           </div>
-        </div>
-        <hr />
-
-        <div class="dotted-border">
-          <div id="file-btn" class="dashed">
-            <label for="fileUpload" class="custom-file">
-              <i
-                class="fa-solid fa-cloud-arrow-up dashed icon"
-                id="cloud-dashed"
-              ></i
-            ></label>
-            <input type="file" id="fileUpload" style="display: none" />
-          </div>
-
-          <h3 id="h3-dashed" class="dashed">
-            Choose a file or drag & drop it here.
-          </h3>
-          <p id="p-dashed" class="dashed">
-            JPEG, PNG, PDF formats, up to 250 MB.
-          </p>
-        </div>
-        <div class="file-container" id="showFilesSec"></div>
-      </div>
-
-      <script defer>
-        const file = document.getElementById("fileUpload");
-        const showFile = document.getElementById("showFilesSec");
-        const closeBtn = document.getElementById("xbutton");
-
-        file.addEventListener("change", () => {
-          const fileData = file.files[0];
-
-          let sizeText = "";
-          const sizeInBytes = fileData.size;
-
-          if (sizeInBytes < 1024 * 1024) {
-            const sizeInKB = (sizeInBytes / 1024).toFixed(2);
-            sizeText = `${sizeInKB} KB`;
-          } else {
-            const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
-            sizeText = `${sizeInMB} MB`;
-          }
-
-          showFile.innerHTML = `
-  <div class="file-border">
-    <i class="fa-solid fa-file"></i>
-
-    <div class="file-border-text-holder">
-      <h3 class="file-name-text">${fileData.name}</h3>
-      <p class="file-size-text">The size is ${sizeText} of 250 MB</p>
-    </div>
-    <div class="x-button" id="xbutton">
-      <button id="close-btn"><i class="fa-solid fa-x" id="gg"></i></button>
-    </div>
-  </div>
-  `;
-        });
-
-        showFile.addEventListener("click", (e) => {
-          if (e.target && e.target.id === "gg") {
-            showFile.innerHTML = "";
-            file.value = "";
-          }
-        });
-      </script>
-      <script
-        src="https://kit.fontawesome.com/669440efe4.js"
-        crossorigin="anonymous"
-      ></script>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
-        rel="stylesheet"
-      />
-<!-- -------------------------------------------SPACE BETWEEN TO FORMS----------------------------------------------------- -->
-      <div class="container-keyword" id="container-keyword" style="display: flex">
-        <div class="clear-all-container">
-          <i
-            class="fa-solid fa-x clear-all-icon"
-            title="clear all"
-            id="del-all-btn"
-          ></i>
+          <div class="file-container" id="showFilesSec"></div>
         </div>
 
-        <div class="Keywords-container" id="Keywords-container"></div>
-
-        <input
-          type="text"
-          id="Keywords-entry"
-          class="entrys"
-          placeholder="Enter the keywords"
+        <script
+          src="https://kit.fontawesome.com/669440efe4.js"
+          crossorigin="anonymous"
+        ></script>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
+          rel="stylesheet"
         />
+        <!-- -------------------------------------------SPACE BETWEEN TO FORMS----------------------------------------------------- -->
+        <div
+          class="container-keyword"
+          id="container-keyword"
+          style="display: none"
+        >
+          <div class="clear-all-container">
+            <i
+              class="fa-solid fa-x clear-all-icon"
+              title="clear all"
+              id="del-all-btn"
+            ></i>
+          </div>
 
-        <button class="add-btn" id="add-btn">Add keyword</button>
+          <div class="Keywords-container" id="Keywords-container"></div>
+
+          <input
+            type="text"
+            id="Keywords-entry"
+            class="entrys"
+            placeholder="Enter the keywords"
+          />
+
+          <button class="add-btn" id="add-btn">Add keyword</button>
+        </div>
+
+        <script
+          src="https://kit.fontawesome.com/669440efe4.js"
+          crossorigin="anonymous"
+        ></script>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
+          rel="stylesheet"
+        />
+        <button class="submit-file" id="submit-file">
+          Submit filse and keywords
+        </button>
       </div>
-
-      <script defer>
-        const keywordContainer = document.getElementById("Keywords-container");
-        const keywordsEntry = document.getElementById("Keywords-entry");
-        const addBtn = document.getElementById("add-btn");
-        const clearAllBtn = document.getElementById("del-all-btn");
-        const clearKeyword = document.getAnimations("del-keyword");
-
-        addBtn.addEventListener("click", () => {
-          keyword = keywordsEntry.value;
-          if (keyword) {
-            keywordContainer.innerHTML += `
-        <div class="Keywords-border">
-            <p>${keyword}</p>
-            <i class="fa-solid fa-x clear-all-icon" title="delet" id="del-keyword"></i>
-        </div>`;
-            keywordsEntry.value = "";
-          }
-        });
-
-        clearAllBtn.addEventListener("click", () => {
-          keywordContainer.innerHTML = "";
-          keywordsEntry.value = "";
-        });
-
-        keywordContainer.addEventListener("click", (e) => {
-          if (e.target && e.target.id === "del-keyword") {
-            e.target.closest(".Keywords-border").remove();
-          }
-        });
-      </script>
-      <script
-        src="https://kit.fontawesome.com/669440efe4.js"
-        crossorigin="anonymous"
-      ></script>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cairo&family=Merriweather&display=swap"
-        rel="stylesheet"
-      />
-      <button class="submit-file" id="submit-file">Submit filse and keywords</button>
-      </div>
-
-      
     </div>
-
-    <script>
-        const switchBtn = document.getElementById("switch-btn");
-        const containerUploadFile = document.getElementById("container");
-        const containerUploadKeyword = document.getElementById("container-keyword")
-        switchBtn.addEventListener("click", ()=>{
-            if (switchBtn.textContent === "Files section"){
-                containerUploadFile.style.display = "flex"
-                containerUploadKeyword.style.display = "none"
-                switchBtn.textContent = "Keywords section"
-            }else{
-                containerUploadFile.style.display = "none"
-                containerUploadKeyword.style.display = "flex"
-                switchBtn.textContent = "Files section"
-            }
-        })
-
-    </script>
   </body>
 </html>

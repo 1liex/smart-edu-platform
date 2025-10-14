@@ -4,11 +4,11 @@
   --text: #333;
   --muted: #666;
   --border: #ccc;
-  --brand: #007BFF;
+  --brand: #007bff;
   --brand-700: #0056b3;
   --err: #e74c3c;
   --err-bg: #fceae9;
-  --shadow: 0 2px 4px rgba(0,0,0,.1);
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -94,7 +94,7 @@ body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   white-space: nowrap;
 }
 
@@ -113,7 +113,7 @@ body {
   border-radius: 22px;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
 }
 
 .home-btn svg {
@@ -145,11 +145,11 @@ body {
   width: 100%;
   max-width: 580px;
   min-width: 450px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
   border-radius: 25px;
   overflow: hidden;
   height: 50px;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .search-button {
@@ -162,7 +162,7 @@ body {
   background: var(--brand);
   border: none;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   flex-shrink: 0;
   border-radius: 25px 0 0 25px;
 }
@@ -208,7 +208,7 @@ body {
   object-fit: cover;
   border-radius: 15px;
   border: 1px solid var(--border);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .spacer {
@@ -241,7 +241,24 @@ h2 {
 .field {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 8px;
+}
+
+.pass-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+#password {
+  width: 100%;
+  margin-right: 0.5em;
+}
+
+#hide,
+#show:hover {
+  cursor: pointer;
 }
 
 .field-top {
@@ -261,7 +278,7 @@ h2 {
   font-weight: 500;
   border: 1px solid var(--border);
   border-radius: 15px;
-  transition: border-color .12s, background-color .12s;
+  transition: border-color 0.12s, background-color 0.12s;
   direction: ltr;
   text-align: left;
 }
@@ -318,7 +335,7 @@ h2 {
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
 }
 
 .submit-btn:hover {
@@ -386,7 +403,7 @@ h2 {
     display: flex;
     order: 1;
   }
-  
+
   .header-inner {
     flex-direction: row;
     justify-content: space-between;
@@ -394,7 +411,7 @@ h2 {
     padding: 10px 16px;
     gap: 12px;
   }
-  
+
   .nav-right {
     display: none;
     position: fixed;
@@ -408,15 +425,15 @@ h2 {
     align-items: stretch;
     padding: 20px;
     gap: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     z-index: 100;
   }
-  
+
   .nav-right.active {
     display: flex;
   }
-  
+
   .btn-link {
     width: 100%;
     padding: 16px 20px;
@@ -427,11 +444,11 @@ h2 {
     border: 1px solid #e0e0e0;
     border-radius: 25px;
   }
-  
+
   .btn-link:hover {
     background: #e8e8e8;
   }
-  
+
   .nav-right .home-btn {
     width: 56px;
     height: 56px;
@@ -440,12 +457,12 @@ h2 {
     border: 2px solid #e0e0e0;
     border-radius: 28px;
   }
-  
+
   .nav-right .home-btn svg {
     width: 24px;
     height: 24px;
   }
-  
+
   .search-bar {
     order: 2;
     flex: 1;
@@ -453,69 +470,69 @@ h2 {
     max-width: none;
     justify-content: center;
   }
-  
+
   .search-form {
     max-width: 100%;
     min-width: 0;
     width: 100%;
     height: 38px;
   }
-  
+
   .search-button {
     width: 38px;
     height: 38px;
   }
-  
+
   .search-button svg {
     width: 16px;
     height: 16px;
   }
-  
+
   .search-input {
     font-size: 14px;
     padding: 0 12px;
   }
-  
+
   .search-input::placeholder {
     font-size: 13px;
   }
-  
+
   .logo-container {
     order: 3;
     flex-shrink: 0;
   }
-  
+
   .brand-logo-img {
     width: 38px;
     height: 38px;
   }
-  
+
   .spacer {
     height: 65px;
   }
-  
+
   main {
     margin: 10px;
     padding: 25px 20px;
     max-width: none;
   }
-  
+
   h2 {
     font-size: 22px;
     margin-bottom: 20px;
   }
-  
+
   .signup-form input {
     min-height: 50px;
     font-size: 16px;
     padding: 15px 18px;
   }
-  
+
   .submit-btn {
     min-height: 50px;
     font-size: 18px;
   }
-  
+
   .terms {
     font-size: 15px;
   }
@@ -525,81 +542,81 @@ h2 {
   .header-inner {
     padding: 8px 12px;
   }
-  
+
   .nav-right {
     top: 55px;
     width: 85%;
     max-width: 350px;
     padding: 16px;
   }
-  
+
   .btn-link {
     padding: 14px 18px;
     font-size: 15px;
   }
-  
+
   .nav-right .home-btn {
     width: 50px;
     height: 50px;
   }
-  
+
   .search-form {
     height: 34px;
   }
-  
+
   .search-button {
     width: 34px;
     height: 34px;
   }
-  
+
   .search-button svg {
     width: 14px;
     height: 14px;
   }
-  
+
   .search-input {
     font-size: 13px;
     padding: 0 10px;
   }
-  
+
   .search-input::placeholder {
     font-size: 12px;
   }
-  
+
   .brand-logo-img {
     width: 34px;
     height: 34px;
   }
-  
+
   .spacer {
     height: 60px;
   }
-  
+
   main {
     margin: 8px;
     padding: 20px 15px;
   }
-  
+
   h2 {
     font-size: 20px;
   }
-  
+
   .signup-form input {
     min-height: 48px;
     font-size: 15px;
     padding: 12px 16px;
   }
-  
+
   .submit-btn {
     min-height: 48px;
     font-size: 16px;
   }
-  
+
   .terms {
     font-size: 13px;
     margin-top: 15px;
   }
-  
+
   .error-text {
     font-size: 13px;
   }
