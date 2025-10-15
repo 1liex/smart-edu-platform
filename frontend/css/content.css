@@ -276,6 +276,7 @@ main {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   width: 100%;
+  height: 100vh;
   flex-wrap: wrap;
   background: transparent !important;
   box-shadow: none !important;
@@ -290,15 +291,15 @@ main {
   text-align: center;
   padding: 20px 15px;
   min-width: 20%;
-  max-height: 25vh;
+  max-height: 35vh;
   transition: transform .2s, box-shadow .2s;
   margin: 10px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* .card:hover {
+  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+} */
 
 .card .circle {
   width: 70px;

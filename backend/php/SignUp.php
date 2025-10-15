@@ -21,7 +21,7 @@ $stmt->bind_param('s', $email);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows > 0) {
-    die('The email has been used before');
+    die(' The email has been used before');
 }
 $stmt->close();
 
