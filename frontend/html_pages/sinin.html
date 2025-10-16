@@ -73,6 +73,7 @@
             maxlength="20"
             aria-describedby="username-err"
             inputmode="latin"
+            autocomplete="username"
           />
           <small id="username-err" class="error-text"
             >Use 4 to 20 letters or digits</small
@@ -100,16 +101,25 @@
           <div class="field-top">
             <label class="label" for="password">Password</label>
           </div>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            minlength="8"
-            aria-describedby="password-err"
-            autocomplete="current-password"
-          />
+
+          <div class="pass-container">
+            <i
+              class="fa-solid fa-eye-slash"
+              id="hide"
+              style="display: flex"
+            ></i>
+            <i class="fa-solid fa-eye" id="show" style="display: none"></i>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              minlength="8"
+              aria-describedby="password-err"
+              autocomplete="current-password"
+            />
+          </div>
           <small id="password-err" class="error-text">
             Must include upper, lower, number, and special character
           </small>

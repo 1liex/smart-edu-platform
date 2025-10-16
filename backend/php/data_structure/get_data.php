@@ -39,10 +39,11 @@ if ($userResult->num_rows == 0) {
 $userData = $userResult->fetch_assoc();
 
 // ✅ 4. التحقق من كلمة المرور
-if ($passInput !== $userData['password']) {
+if (!password_verify($passInput, $userData['password'])) {
     echo json_encode(["error" => "Invalid password"]);
     exit;
 }
+
 
 // ✅ 5. جلب جميع المعلمين وملفاتهم والكلمات والمصادر
 $teachers = [];

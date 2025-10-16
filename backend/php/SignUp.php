@@ -1,40 +1,48 @@
 <?php
 require 'config.php';
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-Type: application/json; charset=UTF-8");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die('this methode is not allowed');
+    echo json_encode(["error" => "This method is not allowed"]);
+    exit;
 }
 
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$password = $_POST['password'] ?? '';
+$data = json_decode(file_get_contents("php://input"), true);
+
+$name = trim($data['username'] ?? '');
+$email = trim($data['email'] ?? '');
+$password = $data['password'] ?? '';
 
 if (!$name || !$email || !$password) {
-    die('All the failed is require, pless fail it');
+    echo json_encode(["error" => "All fields are required"]);
+    exit;
 }
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
-// $token = bin2hex(random_bytes(16));
 
 $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
 $stmt->bind_param('s', $email);
 $stmt->execute();
 $stmt->store_result();
+
 if ($stmt->num_rows > 0) {
-    die(' The email has been used before');
+    echo json_encode(["error" => "The email has been used before"]);
+    exit;
 }
 $stmt->close();
 
 $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
 $stmt->bind_param('sss', $name, $email, $hashed);
+
 if ($stmt->execute()) {
-    // $verify_link = "http://localhost/SMART-EDU-PLATFORM/backend/php/verify.php?token=$token";
-    // echo "تم إنشاء الحساب بنجاح.<br>رابط التفعيل التجريبي (انسخ والصق في المتصفح):<br><a href=\"$verify_link\">$verify_link</a>";
-    echo "The new account has been sign";
-    header("location: ../../frontend/html_pages/login.html");
+    echo json_encode(["success" => "The new account has been created successfully"]);
 } else {
-    echo 'there was an errore while Sign a new account';
+    echo json_encode(["error" => "There was an error while signing up"]);
 }
+
 $stmt->close();
 $conn->close();
 ?>
