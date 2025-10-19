@@ -111,8 +111,8 @@ let sing = [];
       />
     </svg>
   </div>
-  <p>D. ${el.name}</p>
-
+  <h3>D. ${el.name}</h3>
+  <p>${el.email}</p>
   <div class="btn-sel">
     <select class="file-select" data-teacher-id="${el.id}">
       <option value="">اختر ملف</option>

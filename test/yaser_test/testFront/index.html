@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPA Example</title>
-</head>
-<body>
-
-  <!-- الحاوية -->
-  <div id="home" class="section"></div>
-  <div id="page1" class="section"></div>
-  <div id="page2" class="section"></div>
-
-  <script src="index.js"></script>
-</body>
-</html>
+<div class="card">
+  <div class="circle">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+      />
+    </svg>
+  </div>
+  <h3>D. ${el.name}</h3>
+  <p>${el.email}</p>
+  <div class="btn-sel">
+    <select class="file-select" data-teacher-id="${el.id}">
+      <option value="">اختر ملف</option>
+      ${options}
+    </select>
+    <a href="#" class="contact-btn">View</a>
+  </div>
+</div>
