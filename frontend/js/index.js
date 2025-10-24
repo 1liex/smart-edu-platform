@@ -350,22 +350,23 @@ let sing = [];
     }
 
     if (e.target && e.target.id === 'submit-file') {
-      const fileInput = document.getElementById('fileUpload');
+      const file = document.getElementById('fileUpload');
+      const fileData = file.files[0];
       const showFile = document.getElementById('showFilesSec');
 
       if (showFile.innerHTML) {
-        const formData = new FormData();
-        formData.append('file', fileInput.files[0]); // ضفنا الملف إلى الفورم داتا
-
+        const fileName = fileData.name.split('.')[0];
+        const filePath = fileData.name;
+        const fileType = fileData.type.split('/')[1];
         fetch('http://127.0.0.1:5000/API/uploadFile', {
           method: 'POST',
-          body: formData, // لا تضف headers يدوياً هنا!
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.error(err));
-      } else {
-        alert('Please upload file');
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            filename: fileName,
+            filepath: filePath,
+            filetype: fileType,
+          }),
+        });
       }
     }
   });
