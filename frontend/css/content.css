@@ -291,7 +291,7 @@ main {
   text-align: center;
   padding: 20px 15px;
   min-width: 20%;
-  max-height: 30vh;
+  max-height: 35vh;
   transition: transform .2s, box-shadow .2s;
   margin: 10px;
 }
