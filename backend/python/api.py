@@ -153,5 +153,123 @@ def post_api():
         return jsonify({"status": "error", "message": "Unauthorized"}), 401
 
 
+
+
+
+# ========== Admin Section ==========
+
+    #==== function section =====
+def access_db(sql, params=None, fetch=True):
+    db = None
+    cursor = None
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="userdb"
+        )
+        cursor = db.cursor(dictionary=True)
+        
+        if params:
+            cursor.execute(sql, params)
+        else:
+            cursor.execute(sql)
+        
+        if fetch:
+            return cursor.fetchall()
+        else:
+            db.commit()
+            return True
+    except Exception as e:
+        print(e)
+        return [] if fetch else False
+    finally:
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
+
+
+    #===== route of admin section ======
+@app.route("/API/admin/get")
+def fetch_all_users():
+    users = access_db("SELECT * FROM users")
+    return jsonify(users)
+
+@app.route("/API/admin/post", methods=["POST"])
+def change_role():
+    data = request.get_json()
+    user_id = data.get("user_id")
+    role = data.get("new_role")
+
+    if not user_id or not role:
+        return jsonify({"error": "Missing user_id or new_role"}), 400
+
+    sql = "UPDATE users SET role = %s WHERE id = %s"
+    result = access_db(sql, params=(role, user_id), fetch=False)
+
+    if result:
+        return jsonify({"status": "ok"}), 200
+    else:
+        return jsonify({"error": "Failed to update role"}), 500
+
+
+
+
+# ========== Upload files and keywords Section ==========
+
+    #==== function section =====
+def access_db_file(sqlQ):
+    #access db and use sqlQ to save the file in db
+    file_id = 1
+    return file_id
+    # not finished yet
+
+def access_db_keywords(sqlQ):
+    lst = ["id", "keyword"]
+    return lst
+    pass
+
+def create_query_for_file(current_user_id, fileN, fileP, fileT):
+    #here will create the query and send it to the (access_db_files_keywords)
+    query = "the query with the data"
+    return query
+    # not finished yet
+
+def create_query_for_keywords(file_id, keyword):
+    query = "the query with the data"
+    return query
+    # not finished yet
+
+    #===== route of upload files and keywords section ======
+@app.route("/API/uploadFile", methods=["POST"])
+def upload_file():
+    file = request.get_json()
+    if file:
+        current_user_id = file["currentuserid"]
+        file_name = file["filename"]
+        file_path = file["filepath"]
+        file_type = file["filetype"]
+        keywords = file["keywords"]
+        # the data after this will look lile this (5 test test.py x-python ['python', 'js', 'react', 'node js'])
+        q = create_query_for_file(current_user_id, file_name, file_path, file_type)
+        file_id = access_db_file(q)
+        keyword_dict = {} # {1: "python", 2: "js", 3: "react", 4: "node js"} 
+        for keyword in keywords:
+            q = create_query_for_keywords(file_id, keyword)
+            id_and_keyword = access_db_keywords(q)
+            id = id_and_keyword[0]
+            keyword_it_self = id_and_keyword[1]
+            keyword_dict[id] = keyword_it_self
+
+
+        print(current_user_id, file_name, file_path, file_type, keywords)
+    else:
+        print("no file")
+
+    return jsonify({"status": "success", "message": "file added"}), 201
+
+
 if __name__ == "__main__":
     app.run(debug=True)
