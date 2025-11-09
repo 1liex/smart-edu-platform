@@ -210,9 +210,11 @@ if ($userData['role'] === 'teacher') {
 }
 
 // ✅ 7. بناء الاستجابة النهائية
+$token = 123456789;
 $response = [
     "user" => $userData,
-    "teachers" => $teachers
+    "teachers" => $teachers,
+    "token" => $token
 ];
 
 if ($userData['role'] === 'teacher') {

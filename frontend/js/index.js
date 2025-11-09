@@ -76,6 +76,8 @@ let sing = [];
       console.log(data.error);
       alert(data.error);
     } else {
+      const token = data.token
+      sessionStorage.setItem("token", token)
       await loadSection(
         "/frontend/html_pages/content.html",
         "/frontend/css/content.css"

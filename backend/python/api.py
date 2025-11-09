@@ -246,12 +246,13 @@ def create_query_for_keywords(file_id, keyword):
 @app.route("/API/uploadFile", methods=["POST"])
 def upload_file():
     file = request.get_json()
+  
     if file:
         # the data after separate will be like this (5 test test.py x-python ['python', 'js', 'react', 'node js'])
         current_user_id = file["currentuserid"]
         file_name = file["filename"]
         file_path = file["filepath"]
-        file_type = file["filetype"]
+        file_type = file.get("filetype", "none")
         keywords = file["keywords"]
         
         print(current_user_id, file_name, file_path, file_type, keywords)
