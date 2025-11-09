@@ -16,3 +16,9 @@
 #         db.close()
 
 
+def gg():
+    return [1, 2]
+
+
+
+b, s = gg()

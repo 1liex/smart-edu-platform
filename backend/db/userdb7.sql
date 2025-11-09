@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2025 at 03:58 PM
+-- Generation Time: Nov 09, 2025 at 09:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `file_name` varchar(254) NOT NULL,
-  `the_file` varchar(255) NOT NULL,
+  `file_path` varchar(255) NOT NULL,
+  `file_type` varchar(254) NOT NULL,
   `teacher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,8 +39,9 @@ CREATE TABLE `files` (
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`id`, `file_name`, `the_file`, `teacher_id`) VALUES
-(1, 'python', 'py.pdf', 1);
+INSERT INTO `files` (`id`, `file_name`, `file_path`, `file_type`, `teacher_id`) VALUES
+(2, 'js', 'js.pdf', '', 5),
+(3, 'pyhton', 'python.pdf', '', 5);
 
 -- --------------------------------------------------------
 
@@ -52,13 +54,6 @@ CREATE TABLE `keywords` (
   `keyword` varchar(100) NOT NULL,
   `file_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `keywords`
---
-
-INSERT INTO `keywords` (`id`, `keyword`, `file_id`) VALUES
-(1, 'loops in python', 1);
 
 -- --------------------------------------------------------
 
@@ -73,21 +68,6 @@ CREATE TABLE `resources` (
   `resource_type` enum('video','document') NOT NULL,
   `keyword_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `resources`
---
-
-INSERT INTO `resources` (`id`, `title`, `link`, `resource_type`, `keyword_id`) VALUES
-(6, 'For loops in Python are easy ????', 'https://www.youtube.com/watch?v=KWgYha0clzw', 'video', 1),
-(7, 'Python For Loops - Python Tutorial for Absolute Beginners', 'https://www.youtube.com/watch?v=94UHCEmprCY', 'video', 1),
-(8, 'Python Tutorial for Beginners 7: Loops and Iterations - For/While Loops', 'https://www.youtube.com/watch?v=6iF8Xb7Z3wQ', 'video', 1),
-(9, 'While loops in Python are easy ♾️', 'https://www.youtube.com/watch?v=rRTjPnVooxE', 'video', 1),
-(10, 'Python For Loops', 'https://www.w3schools.com/python/python_for_loops.asp', 'document', 1),
-(11, 'Python While Loops', 'https://www.w3schools.com/python/python_while_loops.asp', 'document', 1),
-(12, 'Python Conditions', 'https://www.w3schools.com/python/python_conditions.asp', 'document', 1),
-(13, 'Python Nested Loops', 'https://www.w3schools.com/python/gloss_python_for_nested.asp', 'document', 1),
-(14, 'Python - Loop Dictionaries', 'https://www.w3schools.com/python/python_dictionaries_loop.asp', 'document', 1);
 
 -- --------------------------------------------------------
 
@@ -108,8 +88,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'ali', 'ali@gmail.com', 'abc', 'teacher'),
-(2, 'omar', 'omar@gmial.com', '123', 'student');
+(5, 'ali Ahmed', 'ali@gmail.com', '$2y$10$EA/rhj5LVSU0h/uYY/PxgOC1CLCrjnYmSxcLtWB/.8MtJhpKSAIsu', 'teacher'),
+(18, 'refoabdo', 'refoabdo@gmail.com', '$2y$10$QD5C.kfYKbQtV.tTWuAW.eUIs7Z470BZW5/cVuvn.De1M0iTLYlhO', 'teacher'),
+(19, 'gggg', 'gg@gmail.com', '$2y$10$KXQwRmAvUjxvkI.fUmNQyenJhN/PdE7TM6aGsR4Ll8S6pmb62MsQ6', 'teacher');
 
 --
 -- Indexes for dumped tables
@@ -151,7 +132,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `keywords`
@@ -169,7 +150,7 @@ ALTER TABLE `resources`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

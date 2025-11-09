@@ -247,24 +247,30 @@ def create_query_for_keywords(file_id, keyword):
 def upload_file():
     file = request.get_json()
     if file:
+        # the data after separate will be like this (5 test test.py x-python ['python', 'js', 'react', 'node js'])
         current_user_id = file["currentuserid"]
         file_name = file["filename"]
         file_path = file["filepath"]
         file_type = file["filetype"]
         keywords = file["keywords"]
-        # the data after this will look lile this (5 test test.py x-python ['python', 'js', 'react', 'node js'])
-        q = create_query_for_file(current_user_id, file_name, file_path, file_type)
-        file_id = access_db_file(q)
-        keyword_dict = {} # {1: "python", 2: "js", 3: "react", 4: "node js"} 
-        for keyword in keywords:
-            q = create_query_for_keywords(file_id, keyword)
-            id_and_keyword = access_db_keywords(q)
-            id = id_and_keyword[0]
-            keyword_it_self = id_and_keyword[1]
-            keyword_dict[id] = keyword_it_self
-
-
+        
         print(current_user_id, file_name, file_path, file_type, keywords)
+
+        # function to create query for the files the query will connect the file data with the user who upload it
+        q = create_query_for_file(current_user_id, file_name, file_path, file_type)
+        """here function to access the db with the query we create before for the file
+        and it will return the id of the file it self that seved in db so we can use this id to connect the keywords with the file it self""" 
+        file_id = access_db_file(q)
+        # the dict we will send to the resources function and the resource function will breng the resource from yt and google and save it in db 
+        keyword_dict = {} # {1: "python", 2: "js", 3: "react", 4: "node js"} 
+        for keyword in keywords: # here we will create query for each keyword
+            q = create_query_for_keywords(file_id, keyword) # function to create query for the keywords
+            """here we will access the db with the same query we create before  and after that the function will return the id of the keyword after it saved in db
+            and also it will return the keyword it self like this [1, 'python'] so the first item will be the id and the second the keyword it self"""
+            # here i separate the data will return from the function (access_db_keywords) data will be (id and keyword it self) to (id) var and (keyword_it_self) var
+            id, keyword_it_self = access_db_keywords(q)  
+            keyword_dict[id] = keyword_it_self # and here i want to save the keyword and the id togather in dict so it look like this {1: "python"}
+
     else:
         print("no file")
 
