@@ -53,7 +53,7 @@ $teachers = [];
 $teacherQuery = "
     SELECT 
         u.id AS teacher_id, u.name AS teacher_name, u.email AS teacher_email,
-        f.id AS file_id, f.file_name, f.the_file,
+        f.id AS file_id, f.file_name, f.file_path,
         k.id AS keyword_id, k.keyword,
         r.id AS resource_id, r.title, r.link, r.resource_type
     FROM users u
