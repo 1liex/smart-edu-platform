@@ -242,6 +242,15 @@ def create_query_for_keywords(file_id, keyword):
     return query
     # not finished yet
 
+"""(get_type_file(file)) this function used to get the type of the file if it is not exest
+like if we have sql file there is no type return with it so what this function do lets say we have (test.sql) file 
+so this function will split the file and take the str after the (.) so in the end 
+it will look like this  (test.sql = the type of this file is (sql)) because the str after the (.) is sql """
+def get_type_file(file): 
+    ty = file.split(".")
+    file_type = ty[1]
+    return file_type
+
     #===== route of upload files and keywords section ======
 @app.route("/API/uploadFile", methods=["POST"])
 def upload_file():
@@ -252,7 +261,7 @@ def upload_file():
         current_user_id = file["currentuserid"]
         file_name = file["filename"]
         file_path = file["filepath"]
-        file_type = file.get("filetype", "none")
+        file_type = file.get("filetype", get_type_file(file["filepath"]))
         keywords = file["keywords"]
         
         print(current_user_id, file_name, file_path, file_type, keywords)
