@@ -45,7 +45,7 @@ def search_youtube(keyword):
     results = []
 
 
-    for video in videos_response['items']:
+    for video in videos_response.get("items", []):
         title = video['snippet']['title']
         video_id = video['id']
         views = int(video['statistics'].get('viewCount', 0))
@@ -71,7 +71,7 @@ def search_google(keyword):
         cx=search_engine_id, # it will search in custom search engin (w3school) and the id of this engin is (search_engine_id) we get the id from env file 
         num=5  
     ).execute()
-    print(json.dumps(res, indent=4))
+
     results = []
    
     for item in res.get('items', []):
@@ -80,7 +80,6 @@ def search_google(keyword):
             "link": item['link'],
             "snippet": item['snippet']
         })
-    print(json.dumps(results, indent=4))
     
     return [results, "document"]
 
@@ -132,27 +131,19 @@ i do all that using Flask this library will let u create an API and it is so eas
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/API/resources", methods=["POST"]) # it will get the request from this path
-def post_api():
-    """data will be like this: {"token": "your token...","id": 1, "keyword": "python"}"""
-    data = request.get_json()
+
+def post_api(args):
+    """args will be like this: {"id": 1, "keyword": "python"}"""
     
-    token = data.get("token") # there will be token key to access this api
 
-    if token and token == access_token:
-        keyword_id = data.get("id") # here will get the keyword id that the word get it when it save in db
-        keyword = data.get("keyword") # here will get the word it self
+    keyword_id = args.get("id") # here will get the keyword id that the word get it when it save in db
+    keyword = args.get("keyword") # here will get the word it self
+    yt_resource = search_youtube(keyword) # we call the function and it will return the result from yt
+    google_resource = search_google(keyword) # same thing but from google (w3school)
+    access_resource_table_in_db(keyword_id, yt_resource) # here call function to access the db and it will save the resources and connected it with the keyword id 
+    access_resource_table_in_db(keyword_id, google_resource) # same thing but with google resources
 
-        yt_resource = search_youtube(keyword) # we call the function and it will return the result from yt
-        google_resource = search_google(keyword) # same thing but from google (w3school)
-        access_resource_table_in_db(keyword_id, yt_resource) # here call function to access the db and it will save the resources and connected it with the keyword id 
-        access_resource_table_in_db(keyword_id, google_resource) # same thing but with google resources
-
-        return jsonify({"status": "success", "message": "Resource added"}), 201
-    else:
-        return jsonify({"status": "error", "message": "Unauthorized"}), 401
-
-
+    return jsonify({"status": "success", "message": "Resource added"}), 201
 
 
 
@@ -220,27 +211,85 @@ def change_role():
 # ========== Upload files and keywords Section ==========
 
     #==== function section =====
-def access_db_file(sqlQ):
-    #access db and use sqlQ to save the file in db
-    file_id = 1
-    return file_id
-    # not finished yet
 
-def access_db_keywords(sqlQ):
-    lst = ["id", "keyword"]
-    return lst
-    pass
+
+def access_db_file(sqlQ, params=None):
+    #access db and use sqlQ to save the file in db
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="userdb"
+        )
+        cursor = db.cursor()
+
+        # تنفيذ الكويري مع الباراميترز
+        cursor.execute(sqlQ, params)
+        db.commit()
+
+       
+        file_id = cursor.lastrowid
+
+        return file_id
+
+    except mysql.connector.Error as err:
+        print(f"Database error: {err}")
+        return None
+
+    finally:
+        if db.is_connected():
+            cursor.close()
+            db.close()
+
 
 def create_query_for_file(current_user_id, fileN, fileP, fileT):
     #here will create the query and send it to the (access_db_files_keywords)
-    query = "the query with the data"
-    return query
-    # not finished yet
+    query = """
+        INSERT INTO files (file_name, file_path, file_type, teacher_id)
+        VALUES (%s, %s, %s, %s)
+    """
+    params = (fileN, fileP, fileT, current_user_id)
+    return query, params
+
+
+def access_db_keywords(sqlQ, params=None):
+    try:
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="userdb"
+        )
+        cursor = db.cursor()
+    
+        cursor.execute(sqlQ, params)
+        db.commit()
+
+        keyword_id = cursor.lastrowid
+
+        keyword_it_self = params[0] if params else None
+
+        return keyword_id, keyword_it_self
+
+    except mysql.connector.Error as err:
+        print(f"Database error: {err}")
+        return None, None
+
+    finally:
+        if db.is_connected():
+            cursor.close()
+            db.close()
+
 
 def create_query_for_keywords(file_id, keyword):
-    query = "the query with the data"
-    return query
-    # not finished yet
+    query = """
+        INSERT INTO keywords (keyword, file_id)
+        VALUES (%s, %s)
+    """
+    params = (keyword, file_id)
+    return query, params
+
 
 """(get_type_file(file)) this function used to get the type of the file if it is not exest
 like if we have sql file there is no type return with it so what this function do lets say we have (test.sql) file 
@@ -267,19 +316,23 @@ def upload_file():
         print(current_user_id, file_name, file_path, file_type, keywords)
 
         # function to create query for the files the query will connect the file data with the user who upload it
-        q = create_query_for_file(current_user_id, file_name, file_path, file_type)
+        query, params= create_query_for_file(current_user_id, file_name, file_path, file_type)
         """here function to access the db with the query we create before for the file
         and it will return the id of the file it self that seved in db so we can use this id to connect the keywords with the file it self""" 
-        file_id = access_db_file(q)
+        file_id = access_db_file(query, params)
+        print(file_id)
         # the dict we will send to the resources function and the resource function will breng the resource from yt and google and save it in db 
         keyword_dict = {} # {1: "python", 2: "js", 3: "react", 4: "node js"} 
         for keyword in keywords: # here we will create query for each keyword
-            q = create_query_for_keywords(file_id, keyword) # function to create query for the keywords
+            query, params = create_query_for_keywords(file_id, keyword) # function to create query for the keywords
             """here we will access the db with the same query we create before  and after that the function will return the id of the keyword after it saved in db
             and also it will return the keyword it self like this [1, 'python'] so the first item will be the id and the second the keyword it self"""
             # here i separate the data will return from the function (access_db_keywords) data will be (id and keyword it self) to (id) var and (keyword_it_self) var
-            id, keyword_it_self = access_db_keywords(q)  
+            id, keyword_it_self = access_db_keywords(query, params) 
             keyword_dict[id] = keyword_it_self # and here i want to save the keyword and the id togather in dict so it look like this {1: "python"}
+
+        for i in keyword_dict:
+            post_api({"id": i, "keyword": keyword_dict[i]})
 
     else:
         print("no file")

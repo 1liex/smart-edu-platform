@@ -16,9 +16,7 @@
 #         db.close()
 
 
-def gg():
-    return [1, 2]
+k = {1: "python"}
 
-
-
-b, s = gg()
+for i in k:
+    print(i, k[i])

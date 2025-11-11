@@ -91,9 +91,11 @@ while ($row = $result->fetch_assoc()) {
 
         if ($fileIndex === null) {
             $teacherMap[$t_id]["files"][] = [
-                "file_id" => (int)$row["file_id"],
-                "file_name" => $row["file_name"],
-                "keywords" => []
+                  "file_id"    => (int)$row["file_id"],
+                  "file_name"  => $row["file_name"],
+                  "file_path"  => $row["file_path"],
+                  "teacher_id" => (int)$row["teacher_id"],
+                  "keywords"   => []
             ];
             $fileIndex = array_key_last($teacherMap[$t_id]["files"]);
         }
@@ -143,14 +145,23 @@ $myFiles = [];
 if ($userData['role'] === 'teacher') {
     $myFilesQuery = $conn->prepare("
         SELECT 
-            f.id AS file_id, f.file_name,
-            k.id AS keyword_id, k.keyword,
-            r.id AS resource_id, r.title, r.link, r.resource_type
-        FROM files f
-        LEFT JOIN keywords k ON k.file_id = f.id
-        LEFT JOIN resources r ON r.keyword_id = k.id
-        WHERE f.teacher_id = ?
-        ORDER BY f.id, k.id
+    f.id AS file_id,
+    f.file_name,
+    f.file_path,
+    f.file_type,
+    f.teacher_id,
+    k.id AS keyword_id,
+    k.keyword,
+    r.id AS resource_id,
+    r.title,
+    r.link,
+    r.resource_type
+FROM files f
+LEFT JOIN keywords k ON k.file_id = f.id
+LEFT JOIN resources r ON r.keyword_id = k.id
+WHERE f.teacher_id = ?
+ORDER BY f.id, k.id
+
     ");
     $myFilesQuery->bind_param("i", $userData['id']);
     $myFilesQuery->execute();
@@ -163,9 +174,12 @@ if ($userData['role'] === 'teacher') {
 
         if (!isset($fileMap[$f_id])) {
             $fileMap[$f_id] = [
-                "file_id" => (int)$row["file_id"],
-                "file_name" => $row["file_name"],
-                "keywords" => []
+                "file_id"    => (int)$row["file_id"],
+                "file_name"  => $row["file_name"],
+                "file_path"  => $row["file_path"],
+                "file_type"  => $row["file_type"],
+                "teacher_id" => (int)$userData["id"],
+                "keywords"   => []
             ];
         }
 
@@ -210,11 +224,10 @@ if ($userData['role'] === 'teacher') {
 }
 
 // ✅ 7. بناء الاستجابة النهائية
-$token = 123456789;
+
 $response = [
     "user" => $userData,
     "teachers" => $teachers,
-    "token" => $token
 ];
 
 if ($userData['role'] === 'teacher') {
