@@ -16,7 +16,24 @@
 #         db.close()
 
 
-k = {1: "python"}
+# k = {1: "python"}
 
-for i in k:
-    print(i, k[i])
+# for i in k:
+#     print(i, k[i])
+
+
+
+# import random
+
+# pc_num = random.randint(1,10)
+
+# while True:
+#     user_input = int(input("ges the number (1, 10): "))
+#     if user_input == pc_num:
+#         print("you win!")
+#         break
+
+#     elif user_input < pc_num:
+#         print("choose larg number")
+#     elif user_input > pc_num:
+#         print("choose less num")
