@@ -207,8 +207,6 @@ def change_role():
         return jsonify({"error": "Failed to update role"}), 500
 
 
-
-
 # ========== Upload files and keywords Section ==========
 
     #==== function section =====
@@ -225,7 +223,6 @@ def access_db_file(sqlQ, params=None):
         )
         cursor = db.cursor()
 
-        # تنفيذ الكويري مع الباراميترز
         cursor.execute(sqlQ, params)
         db.commit()
 
@@ -331,16 +328,24 @@ def upload_file():
             # here i separate the data will return from the function (access_db_keywords) data will be (id and keyword it self) to (id) var and (keyword_it_self) var
             id, keyword_it_self = access_db_keywords(query, params) 
             keyword_dict[id] = keyword_it_self # and here i want to save the keyword and the id togather in dict so it look like this {1: "python"}
-        countt = []
+
+        res_count = []
         for i in keyword_dict:
-           countt.append(post_api({"id": i, "keyword": keyword_dict[i]}))
-        
-        print(countt)
+           res_count.append(post_api({"id": i, "keyword": keyword_dict[i]}))
+
+        vid = 0
+        doc = 0
+        print(res_count)
+        if len(res_count) == 1:
+            vid, doc = res_count[0] 
+        else:
+            for v, d in res_count:
+                vid += v
+                doc += d
     else:
         print("no file")
-    vid = countt[0][0] + countt[1][0]
-    doc = countt[0][1] + countt[1][1]
-    return jsonify({"status": "success", "message": f"file added\n{vid  } videos added\n{doc} document added"}), 201
+    
+    return jsonify({"status": "success", "message": f"file added\n{vid} videos\n{doc} document"}), 201
 
 
 if __name__ == "__main__":

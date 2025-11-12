@@ -1,69 +1,26 @@
-const sections = document.querySelectorAll(".section");
+let lastSelectedFile = null; // متغير لتتبع الملف اللي تم اختياره
 
-// تحميل ملفات HTML داخل كل section
-async function loadSection(sectionId, file) {
-  const res = await fetch(file);
-  const data = await res.text();
-  document.getElementById(sectionId).innerHTML = data;
-}
+document.body.addEventListener('click', async (e) => {
+  if (e.target && e.target.classList.contains('contact-btn')) {
+    const parent = e.target.closest('.btn-sel');
+    const select = parent.querySelector('.file-select');
+    const selectedValue = select.value;
 
-// إخفاء كل section واظهار section محددة
-function showSection(sectionId) {
-  sections.forEach(sec => sec.style.display = "none");
-  document.getElementById(sectionId).style.display = "block";
-}
+    if (!selectedValue || selectedValue === lastSelectedFile) return;
 
-// مثال: تحميل كل المحتوى عند بدء الصفحة
-(async () => {
-  await loadSection("home", "home.html");
-  await loadSection("page1", "page1.html");
-  await loadSection("page2", "page2.html")
-  
+    lastSelectedFile = selectedValue; // نحفظ الملف الحالي لمنع التكرار
 
-  // إظهار أول section افتراضي
-  showSection("home");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-})();
+    // الكود اللي يستدعي showResourcesPage
+    const teacher = data.teachers.find((t) =>
+      t.files && t.files.some((f) => f.file_id == selectedValue)
+    );
+    if (teacher) {
+      const file = teacher.files.find((f) => f.file_id == selectedValue);
+      await loadSection(
+        '/frontend/html_pages/view-content.html',
+        '/frontend/css/view-content.css'
+      );
+      showResourcesPage(file);
+    }
+  }
+});
