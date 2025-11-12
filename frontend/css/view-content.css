@@ -54,6 +54,9 @@ body {
 .burger-checkbox {
   display: none;
 }
+#file-view-btn{
+  margin-top: 0.7em;
+}
 
 .burger-menu {
   display: none;

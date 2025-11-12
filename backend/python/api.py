@@ -85,6 +85,7 @@ def search_google(keyword):
 
 # Function to access the db and append the data to it 
 def access_resource_table_in_db(keyword_id, resource_details):
+    count = 0
     try:
         db = mysql.connector.connect(
             host="localhost",
@@ -96,7 +97,7 @@ def access_resource_table_in_db(keyword_id, resource_details):
 
         sql = "INSERT INTO resources (title, link, resource_type, keyword_id) VALUES (%s, %s, %s, %s)"
         
-        count = 0
+        
         results, r_type = resource_details
 
         for item in results:
@@ -119,7 +120,7 @@ def access_resource_table_in_db(keyword_id, resource_details):
             cursor.close()
         if db:
             db.close()
-
+    return count
 
 # ========== Flask API ==========
 
@@ -140,10 +141,10 @@ def post_api(args):
     keyword = args.get("keyword") # here will get the word it self
     yt_resource = search_youtube(keyword) # we call the function and it will return the result from yt
     google_resource = search_google(keyword) # same thing but from google (w3school)
-    access_resource_table_in_db(keyword_id, yt_resource) # here call function to access the db and it will save the resources and connected it with the keyword id 
-    access_resource_table_in_db(keyword_id, google_resource) # same thing but with google resources
+    vidCount = access_resource_table_in_db(keyword_id, yt_resource) # here call function to access the db and it will save the resources and connected it with the keyword id 
+    docCount = access_resource_table_in_db(keyword_id, google_resource) # same thing but with google resources
 
-    return jsonify({"status": "success", "message": "Resource added"}), 201
+    return [vidCount, docCount]
 
 
 
@@ -330,14 +331,16 @@ def upload_file():
             # here i separate the data will return from the function (access_db_keywords) data will be (id and keyword it self) to (id) var and (keyword_it_self) var
             id, keyword_it_self = access_db_keywords(query, params) 
             keyword_dict[id] = keyword_it_self # and here i want to save the keyword and the id togather in dict so it look like this {1: "python"}
-
+        countt = []
         for i in keyword_dict:
-            post_api({"id": i, "keyword": keyword_dict[i]})
-
+           countt.append(post_api({"id": i, "keyword": keyword_dict[i]}))
+        
+        print(countt)
     else:
         print("no file")
-
-    return jsonify({"status": "success", "message": "file added"}), 201
+    vid = countt[0][0] + countt[1][0]
+    doc = countt[0][1] + countt[1][1]
+    return jsonify({"status": "success", "message": f"file added\n{vid  } videos added\n{doc} document added"}), 201
 
 
 if __name__ == "__main__":
