@@ -31,15 +31,22 @@ async function loadSection(file, cssFile) {
   }
 }
 
-function showVideoCardes(videos) {
-  const vidCard = `
+function showVideoCardes(data) {
+  const ytRow = document.getElementById("yt-row");
+  console.log(data);
+  data.forEach((el) => {
+    el.resources.videos.forEach((vid) => {
+      console.log(vid);
+      ytRow.innerHTML += `
 <div class="card">
   <div class="icon"><div class="icon-play"></div></div>
   <h3>Video 2</h3>
-  <p class="Video-title">Video description</p>
-  <a href="#" class="contact-btn">View</a>
+  <p class="Video-title">${vid.title}</p>
+  <a href="${vid.link}" class="contact-btn" target="_blank">View</a>
 </div>
 `;
+    });
+  });
 }
 
 function showResourcesPage(data) {
@@ -56,8 +63,7 @@ function showResourcesPage(data) {
     selectKeword.innerHTML += option;
   });
 
-  console.table(keywords);
-  console.table(data);
+  showVideoCardes(keywords);
 }
 
 function showContent(data) {
