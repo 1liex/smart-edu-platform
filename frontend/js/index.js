@@ -31,21 +31,31 @@ async function loadSection(file, cssFile) {
   }
 }
 
-function showVideoCardes(data) {
+function showVideoCards(data) {
   const ytRow = document.getElementById("yt-row");
-  console.log(data);
-  data.forEach((el) => {
-    el.resources.videos.forEach((vid) => {
-      console.log(vid);
-      ytRow.innerHTML += `
+  data.resources.videos.forEach((vid) => {
+    ytRow.innerHTML += `
 <div class="card">
   <div class="icon"><div class="icon-play"></div></div>
-  <h3>Video 2</h3>
+  <h3>Video</h3>
   <p class="Video-title">${vid.title}</p>
   <a href="${vid.link}" class="contact-btn" target="_blank">View</a>
 </div>
 `;
-    });
+  });
+}
+
+function showDocCards(data) {
+  const googleRow = document.getElementById("google-row");
+  data.resources.documents.forEach((doc) => {
+    googleRow.innerHTML += `
+  <div class="card">
+    <div class="icon"><div class="icon-search"></div></div>
+    <h3>Result</h3>
+    <p>${doc.title}</p>
+    <a href="${doc.link}" class="contact-btn" target="_blank">View</a>
+  </div>
+  `;
   });
 }
 
@@ -62,8 +72,23 @@ function showResourcesPage(data) {
     const option = `<option value="${el.keyword_id}" class="op">${el.keyword}</option>`;
     selectKeword.innerHTML += option;
   });
+  let opId = 0;
 
-  showVideoCardes(keywords);
+  document.body.addEventListener("click", (e) => {
+    if (e.target && e.target.id === "sel") {
+      opId = e.target.value;
+    }
+    keywords.forEach((key) => {
+      if (Number(opId) === key.keyword_id) {
+        const rowYt = document.getElementById("yt-row");
+        const rowGoogel = document.getElementById("google-row");
+        rowYt.innerHTML = "";
+        rowGoogel.innerHTML = "";
+        showVideoCards(key);
+        showDocCards(key);
+      }
+    });
+  });
 }
 
 function showContent(data) {
@@ -84,7 +109,6 @@ function showContent(data) {
             )
             .join("")
         : `<option value="">لا يوجد ملفات</option>`;
-    console.log(options);
     frame.innerHTML += `
 <div class="card">
   <div class="circle">
@@ -292,7 +316,6 @@ function showContent(data) {
     sessionStorage.clear();
     window.location.reload();
   });
-  console.log(data);
 }
 
 let data = [];
@@ -309,7 +332,6 @@ async function getDataUsingSessionStorage(data) {
 
   data = await res.json();
   if (data.error) {
-    console.log(data.error);
     alert(data.error);
   } else {
     await loadSection(
@@ -375,7 +397,6 @@ async function getDataUsingSessionStorage(data) {
 
     data = await res.json();
     if (data.error) {
-      console.log(data.error);
       alert(data.error);
     } else {
       sessionStorage.setItem("email", loginData.email);
@@ -428,7 +449,6 @@ async function getDataUsingSessionStorage(data) {
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        console.log(username, email, password);
         const singIn = { username: username, email: email, password: password };
         await singInD(singIn);
       });
@@ -443,7 +463,6 @@ async function getDataUsingSessionStorage(data) {
         "/frontend/html_pages/content.html",
         "/frontend/css/content.css"
       );
-      console.log("hi");
     }
 
     if (e.target && e.target.id === "burgerBtn") {
