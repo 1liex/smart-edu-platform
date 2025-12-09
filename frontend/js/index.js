@@ -131,7 +131,47 @@ function showContent(data) {
 
     `;
   });
+  const searchForm = document.getElementById("search-form");
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchInput = document.getElementById("search").value;
+    console.log(data);
+    const findTeacher = data.teachers;
+    findTeacher.map((el) => {
+      if (el.name === searchInput) {
+        const options =
+          el.files && el.files.length
+            ? el.files
+                .map(
+                  (f) =>
+                    `<option value="${f.file_id}" class="op">${f.file_name}</option>`
+                )
+                .join("")
+            : `<option value="">لا يوجد ملفات</option>`;
+        frame.innerHTML = `
+<div class="card">
+  <div class="circle">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+      />
+    </svg>
+  </div>
+  <h3>D. ${el.name}</h3>
+  <p>${el.email}</p>
+  <div class="btn-sel">
+    <select class="file-select" data-teacher-id="${el.id}">
+      <option value="">اختر ملف</option>
+      ${options}
+    </select>
+    <a href="#" class="contact-btn">View</a>
+  </div>
+</div>
 
+    `;
+      }
+    });
+  });
   document.body.addEventListener("click", async (e) => {
     if (e.target && e.target.id == "GoBack") {
       document.getElementById("GoBack").addEventListener("click", async () => {
