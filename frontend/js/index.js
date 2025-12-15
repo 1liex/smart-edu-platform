@@ -479,8 +479,8 @@ async function getDataUsingSessionStorage(data) {
   document.body.addEventListener("click", async (e) => {
     if (e.target && e.target.id === "signin") {
       await loadSection(
-        "/frontend/html_pages/sinin.html",
-        "/frontend/css/sinin.css"
+        "/frontend/html_pages/signUp.html",
+        "/frontend/css/signUp.css"
       );
 
       const singInForme = document.getElementById("signup-form");
