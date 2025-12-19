@@ -61,8 +61,6 @@ function showDocCards(data) {
 
 function showResourcesPage(data) {
   const fileTitle = document.getElementById("file-title");
-  const videoTitle = document.querySelectorAll(".Video-title");
-  const showVideoBtn = document.querySelectorAll(".contact-btn");
   const selectKeword = document.getElementById("sel");
   const keywords = data.keywords;
 
@@ -88,6 +86,12 @@ function showResourcesPage(data) {
         showDocCards(key);
       }
     });
+
+    if (e.target && e.target.id === "file-view-btn"){
+      console.log(fileTitle.textContent)
+      window.location.href =
+    `http://127.0.0.1:5000/get_file?filename=${fileTitle.textContent}`;
+    }
   });
 }
 
@@ -231,16 +235,19 @@ function showContent(data) {
           keywords.push(p.textContent);
         });
 
+        const formData = new FormData()
+
+        formData.append("file", fileData)
+        formData.append("currentuserid", currentUserId)
+        formData.append("filname", fileName)
+        formData.append("filepath", filePath)
+        formData.append("filetype", fileType)
+        formData.append("keywords", JSON.stringify(keywords))
+        
         const res = await fetch("http://127.0.0.1:5000/API/uploadFile", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            currentuserid: currentUserId,
-            filename: fileName,
-            filepath: filePath,
-            filetype: fileType,
-            keywords: keywords,
-          }),
+          // headers: { "Content-Type": "application/json" },
+          body: formData
         });
         const dat = await res.json();
         alert(dat.message);

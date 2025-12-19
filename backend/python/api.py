@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask import send_from_directory
 from flask_cors import CORS
 import json
 import mysql.connector
@@ -301,17 +302,22 @@ def get_type_file(file):
     #===== route of upload files and keywords section ======
 @app.route("/API/uploadFile", methods=["POST"])
 def upload_file():
-    file = request.get_json()
+    file = request.files.get("file")
   
     if file:
         # the data after separate will be like this (5 test test.py x-python ['python', 'js', 'react', 'node js'])
-        current_user_id = file["currentuserid"]
-        file_name = file["filename"]
-        file_path = file["filepath"]
-        file_type = file.get("filetype", get_type_file(file["filepath"]))
-        keywords = file["keywords"]
-        
-        print(current_user_id, file_name, file_path, file_type, keywords)
+        current_user_id = request.form.get("currentuserid")
+        file_name = request.form.get("filname")
+        file_path = request.form.get("filepath")
+        file_type = request.form.get("filetype")
+        keywords = json.loads(request.form.get("keywords"))
+        print(keywords)
+        upload_folder = "backend/python/uploads"
+        os.makedirs(upload_folder, exist_ok=True)
+
+        save_path = os.path.join(upload_folder, file.filename)
+        file.save(save_path)
+        print(current_user_id, file_name, file_path, file_type, keywords, file)
 
         # function to create query for the files the query will connect the file data with the user who upload it
         query, params= create_query_for_file(current_user_id, file_name, file_path, file_type)
@@ -347,6 +353,16 @@ def upload_file():
     
     return jsonify({"status": "success", "message": f"file added\n{vid} videos\n{doc} document"}), 201
 
+
+@app.get("/get_file")
+def get_file():
+    file_name = request.args.get("filename")
+    print(file_name)
+    return send_from_directory(
+        directory="uploads",
+        path=file_name,
+        as_attachment=True
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
