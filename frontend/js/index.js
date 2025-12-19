@@ -230,6 +230,10 @@ function showContent(data) {
         const fileType = fileData.type.split("/")[1];
         const keywords = [];
         const keywordElements = document.querySelectorAll(".Keywords-border p");
+        if (keywordElements.length === 0){
+          alert("you have to add keywords")
+          return
+        }
 
         keywordElements.forEach((p) => {
           keywords.push(p.textContent);
